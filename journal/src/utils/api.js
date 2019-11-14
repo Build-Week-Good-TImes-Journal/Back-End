@@ -8,7 +8,7 @@ export default function() {
     return axios.create({
         baseURL: "http://localhost:4020",
         headers: {
-            // Authorization: getToken()
+            Authorization: getToken()
         }
     });
 }
