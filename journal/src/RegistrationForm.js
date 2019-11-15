@@ -1,41 +1,46 @@
-Copy
+
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-
-function LoginForm({ values, errors, touched, isSubmitting }) {
+function LoginForm({ values, errors, touched }) {
   return (
-    <form>
+    <Form>
       <div>
-        {touched.username && errors.username && <p>{errors.username}</p>}
-        <Field type="username" name="username" placeholder="username" />
+          <h1>Please Register</h1>
+        {touched.email && errors.email && <p>{errors.email}</p>}
+        <Field type="email" name="email" placeholder="Email" />
       </div>
       <div>
         {touched.password && errors.password && <p>{errors.password}</p>}
         <Field type="password" name="password" placeholder="Password" />
       </div>
+      <button>Register Now!</button>
     </Form>
   );
 }
 
 const FormikLoginForm = withFormik({
-  mapPropsToValues({ email, password, tos, meal }) {
+  mapPropsToValues({ email, password }) {
     return {
-      login: email || "",
-      password: password || ""
+      email: email || "",
+      password: password || "",
     };
   },
+
   validationSchema: Yup.object().shape({
-    Login: Yup.string()
+    email: Yup.string()
       .email("Email not valid")
       .required("Email is required"),
     password: Yup.string()
-      .min(16, "Password must be 16 characters or longer")
+      .min(6, "Password must be 6 characters or longer")
       .required("Password is required")
   }),
-  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
-   
+
+  handleSubmit(values) {
+    console.log(values); 
+    //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
+  }
 })(LoginForm);
 
 export default FormikLoginForm;
