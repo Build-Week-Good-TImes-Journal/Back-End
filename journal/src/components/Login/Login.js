@@ -86,6 +86,7 @@ const FormikLoginForm = withFormik({
       api()
           .post("/api/auth/login", values)
           .then(result => {
+              console.log(result);
               localStorage.setItem("token", result.data.token);
           })
           .catch(error => {
