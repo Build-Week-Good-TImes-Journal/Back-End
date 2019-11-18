@@ -1,5 +1,6 @@
 import React from "react";
-import { withFormik, Form } from "formik";
+import api from "../../utils/api";
+import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { } from "reactstrap";
 import styled from "styled-components";
@@ -48,13 +49,13 @@ function LoginForm({ values, errors, touched }) {
           Welocome to the Simple Enjoyment <br /> Sign-in Page
           </Header>
         {touched.email && errors.email && <p>{errors.email}</p>}
-        <Fields type="email" name="email" placeholder="Email or Username" />
+        <Field type="text" name="username" placeholder="Email or Username" />
       </div>
       <div>
         {touched.password && errors.password && <p>{errors.password}</p>}
-        <Fields type="password" name="password" placeholder="Password" />
+        <Field type="password" name="password" placeholder="Password" />
       </div>
-       <SignIn>Sign in!</SignIn>
+       <button type="submit">Sign in!</button>
       <div>
         <RegLink href="url">if you don't have an account with us sign up here!</RegLink>
         </div>
@@ -65,23 +66,31 @@ function LoginForm({ values, errors, touched }) {
   );
 }
 const FormikLoginForm = withFormik({
-  mapPropsToValues({ email, password }) {
+  mapPropsToValues({ username, password }) {
     return {
-      email: email || "",
+      username: username || "",
       password: password || ""
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email("Email not valid")
-      .required("Email is required"),
+    // email: Yup.string()
+      // .email("Email not valid")
+      // .required("Email is required"),
     password: Yup.string()
       .min(6, "Password must be 6 characters or longer")
       .required("Password is required")
   }),
   handleSubmit(values) {
     console.log(values);
-    //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
+
+      api()
+          .post("/api/auth/login", values)
+          .then(result => {
+              localStorage.setItem("token", result.data.token);
+          })
+          .catch(error => {
+              console.log(error);
+          });
   }
 })(LoginForm);
 export default FormikLoginForm;
