@@ -12,6 +12,6 @@ const AppRouting = () => {
         </div>
     )
 
-}
+};
 
 export default AppRouting;
