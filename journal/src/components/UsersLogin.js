@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import api from "../utils/api";
-import { Button, HeaderLogin } from "../Styles/style-widgets";
+import { Button, HeaderLogin , Info, Container } from "../Styles/style-widgets";
 
 function UsersLogin(props) {
   const [error, setError] = useState();
@@ -36,23 +36,24 @@ function UsersLogin(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <HeaderLogin>Login</HeaderLogin>
-      <input
-        type="text"
-        name="username"
-        value={login.username}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        name="password"
-        value={login.password}
-        onChange={handleChange}
-      />
-      <Button type="submit">Login</Button>
-    </form>
+    <Container>
+      <form onSubmit={handleSubmit}>
+        <HeaderLogin>Login</HeaderLogin>
+        <Info
+          type="text"
+          name="username"
+          value={login.username}
+          onChange={handleChange}
+        />
+        <Info
+          type="password"
+          name="password"
+          value={login.password}
+          onChange={handleChange}
+        />
+        <Button type="submit">Login</Button>
+      </form>
+    </Container>
   );
 }
-
 export default UsersLogin;

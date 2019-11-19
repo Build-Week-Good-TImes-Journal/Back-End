@@ -2,6 +2,8 @@ import React,{useState} from "react"
 import api from "../utils/api"
 import axios from "axios"
 import {HeaderLogin} from "../Styles/style-widgets"
+
+
 function SignUp(){
 const[User,SetUser]=useState({
     username:"",
