@@ -1,13 +1,17 @@
 import React,{useState} from "react";
 import api from "../utils/api"
 
+
 function AdminLogin(props){
+
     const [error,setError]=useState()
     const [login,setLogin]=useState({
         username:"",
         password:"",
-        role:0
+        role:0 ,
     })
+    
+    
 
     const handleChange= (e) =>{
         setLogin({
@@ -22,8 +26,9 @@ function AdminLogin(props){
         .post("/api/auth/login", login)
         .then(res=>{
             localStorage.setItem("token", res.data.token)
+            localStorage.setItem("message",JSON.stringify(res.data.message))
             props.history.push("/users")
-            
+            console.log(res)
         })
         .catch(err=>{
             setError(err)
@@ -39,6 +44,7 @@ function AdminLogin(props){
             <input type="password" name="password" value={login.password} onChange={handleChange}/>
             <button type="submit">Login</button>
         </form>
+        
     )
 }
 

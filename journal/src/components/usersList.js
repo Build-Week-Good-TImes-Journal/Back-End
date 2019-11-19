@@ -3,16 +3,19 @@ import api from "../utils/api"
 import {Link} from "react-router-dom"
 
 
-function Users(){
-    const[users,setUsers]=useState([])
+function Users(props){
     
-
+    const[users,setUsers]=useState([])
+    const[message,setMessage]=useState("")
+    const Store = JSON.parse(window.localStorage.getItem("message"))
+    
     useEffect(()=>{
         api()
         .get("/api/users/")
         .then(res=>{
             setUsers(res.data.users)
             localStorage.setItem("Users",JSON.stringify(res.data.users))
+            setMessage(Store)
         })
         .catch(err=>{
             console.log(err)
@@ -34,6 +37,7 @@ function Users(){
 
     return(
         <div>
+            <h1>{message}</h1>
             {users.map(user=>(
                 <div key={user.id}>
                     <p>User Name: {user.username}  <br/>   Role: {user.role}  <br/> Created At: {user.created_at}</p> 
