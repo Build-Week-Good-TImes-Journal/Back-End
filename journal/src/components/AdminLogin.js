@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import api from "../utils/api"
+import { Button, HeaderLogin , Info, Container } from "../Styles/style-widgets";
 
 
 function AdminLogin(props){
@@ -38,12 +39,14 @@ function AdminLogin(props){
     }
 
     return(
+        <Container>
         <form onSubmit={handleSubmit}>
-            <h3> Admin Login</h3>
-            <input type="text" name="username" value={login.username} onChange={handleChange}/>
-            <input type="password" name="password" value={login.password} onChange={handleChange}/>
-            <button type="submit">Login</button>
+            <HeaderLogin> Admin Login</HeaderLogin>
+            <Info type="text" name="username" value={login.username} onChange={handleChange}/>
+            <Info type="password" name="password" value={login.password} onChange={handleChange}/>
+            <Button type="submit">Login</Button>
         </form>
+        </Container>
         
     )
 }

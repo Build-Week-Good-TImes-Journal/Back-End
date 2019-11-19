@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import api from "../utils/api"
 import axios from "axios"
-import {HeaderLogin} from "../Styles/style-widgets"
+import { Button, HeaderLogin , Info, Container } from "../Styles/style-widgets"
 
 
 function SignUp(){
@@ -32,12 +32,14 @@ const handleSubmit=(e)=>{
 }
 
     return(
+        <Container>
          <form onSubmit={handleSubmit}>
             <HeaderLogin> Sign Up</HeaderLogin>
-            <input type="text" name="username" value={User.username} onChange={handleChange}/>
-            <input type="password" name="password" value={User.password} onChange={handleChange}/>
-            <button type="submit">Login</button>
+            <Info type="text" name="username" value={User.username} onChange={handleChange}/>
+            <Info type="password" name="password" value={User.password} onChange={handleChange}/>
+            <Button type="submit">Login</Button>
         </form>
+        </Container>
     )
 }
 
