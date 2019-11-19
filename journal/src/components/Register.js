@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import api from "../utils/api"
 import axios from "axios"
-
+import {HeaderLogin} from "../Styles/style-widgets"
 function SignUp(){
 const[User,SetUser]=useState({
     username:"",
@@ -31,7 +31,7 @@ const handleSubmit=(e)=>{
 
     return(
          <form onSubmit={handleSubmit}>
-            <h3> Sign Up</h3>
+            <HeaderLogin> Sign Up</HeaderLogin>
             <input type="text" name="username" value={User.username} onChange={handleChange}/>
             <input type="password" name="password" value={User.password} onChange={handleChange}/>
             <button type="submit">Login</button>
