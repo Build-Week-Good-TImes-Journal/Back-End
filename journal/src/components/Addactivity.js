@@ -1,18 +1,20 @@
 import React,{useState, useEffect} from "react"
 import api from "../utils/api"
+import Header from "./Header"
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
-function Addactivity(){
-    const user_id = JSON.parse(window.localStorage.getItem("user id"))
-    console.log(user_id)
+
+function Addactivity(props){
+    const user_name = JSON.parse(window.localStorage.getItem("username"))
+    const{id}=props.match.params
+
     const[activity,setActivity]=useState({
         name:"",
         description:"",
-        id:user_id
+        user_id:id,
     })
-    const user_name = JSON.parse(window.localStorage.getItem("username"))
     
-    console.log(user_name)
-
     const handleChange=(e)=>{
         setActivity({
             ...activity,
@@ -26,34 +28,22 @@ function Addactivity(){
         .post(`/api/activities/${user_name}`, activity)
         .then(res=>{
             console.log(res)
-            localStorage.setItem("add activity",JSON.stringify(res.data))
+            localStorage.setItem("add activity",JSON.stringify(res.config.data))
+            props.history.push(`/userdashboard/${id}`)
         })
+     
         .catch(err=>{
             console.log(err)
         })
     }
     return(
         <div>
+            <Header/>
             <h1>Add Activity</h1>
-            {/* <form onSubmit={handleSubmit}>
-                <select name="activites" onChange={handleChange}>
-                    <option value="outdoor">Outdoor</option>
-                    <option value="leisure">Leisure</option>
-                    <option value="sport">Sport</option>
-                    <option value="art">Art</option>
-                    <option value="family">Family</option>
-                    <option value="exercise">Exercise</option>
-                    <option value="social">Social</option>
-                    <option value="music">Music</option>
-                </select>
-                <button type="submit">Add activity</button>
-            </form> */}
-
-
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="name" value={activity.name} onChange={handleChange}/>
-                <input type="text" name="description" value={activity.description} onChange={handleChange}/>
-                <button type="submit">Add activity</button>
+            <br/><br/><form onSubmit={handleSubmit}>
+                <span>Name of the activity : </span><TextField label="Name" type="text" name="name" value={activity.name} onChange={handleChange}/><br/><br/>
+                <span>Description of the activity : </span><TextField label="Description" type="text" name="description" value={activity.description} onChange={handleChange}/><br/><br/>
+                <Button type="submit">Add activity</Button>
             </form>
         </div>
         

@@ -1,8 +1,11 @@
 import React,{useState} from "react"
 import api from "../utils/api"
-import axios from "axios"
+import Header from "./Header"
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
-function SignUp(){
+
+function SignUp(props){
 const[User,SetUser]=useState({
     username:"",
     password:"",
@@ -16,26 +19,31 @@ const handleChange= (e) =>{
     })
 }
 
+
 const handleSubmit=(e)=>{
     e.preventDefault()
     api()
     .post("/api/auth/register/", User)
     .then(res=>{
         console.log(res)
+        props.history.push("/User-login")
     })
     .catch(err=>{
         console.log(err)
     })
-
 }
 
     return(
-         <form onSubmit={handleSubmit}>
-            <h3> Sign Up</h3>
-            <input type="text" name="username" value={User.username} onChange={handleChange}/>
-            <input type="password" name="password" value={User.password} onChange={handleChange}/>
-            <button type="submit">Login</button>
-        </form>
+        <div>
+            <Header/>
+            <form onSubmit={handleSubmit}>
+                <br/><br/><h3> Sign Up</h3>
+                <TextField label="User Name" type="text" name="username" placeholder="User Name" value={User.username} onChange={handleChange}/><br/><br/>
+                <TextField label="Password" type="password" name="password" placeholder="password" value={User.password} onChange={handleChange}/><br/><br/>
+                <Button type="submit">Signup</Button>
+            </form>
+        </div>
+         
     )
 }
 

@@ -1,6 +1,9 @@
 import React,{useState} from "react";
 import api from "../utils/api"
-
+import Header from "./Header"
+import {Link} from "react-router-dom"
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 function AdminLogin(props){
 
@@ -11,8 +14,6 @@ function AdminLogin(props){
         role:0 ,
     })
     
-    
-
     const handleChange= (e) =>{
         setLogin({
             ...login,
@@ -38,12 +39,17 @@ function AdminLogin(props){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <h3> Admin Login</h3>
-            <input type="text" name="username" value={login.username} onChange={handleChange}/>
-            <input type="password" name="password" value={login.password} onChange={handleChange}/>
-            <button type="submit">Login</button>
-        </form>
+
+        <div>
+            <Header/>
+            <Link to="/">Home</Link>
+            <form onSubmit={handleSubmit}>
+                <br/><br/><h3> Admin Login</h3>
+                 <TextField label="User Name" type="text" name="username" placeholder="User Name" value={login.username} onChange={handleChange}/><br/><br/>
+                 <TextField label="Password" type="password" name="password" placeholder="Password" value={login.password} onChange={handleChange}/><br/><br/>
+                 <Button type="submit">Login</Button>
+             </form>
+        </div>
         
     )
 }
