@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import api from "../utils/api"
 import axios from "axios"
-import { Button, HeaderLogin , Info, Container } from "../Styles/style-widgets"
+import { Button, HeaderLogin , Info, Container, Banner } from "../Styles/style-widgets"
 import logo from '../Styles/logo.png'
 
 function SignUp(){
@@ -33,7 +33,9 @@ const handleSubmit=(e)=>{
 
     return(
         <Container>
+            <Banner>
             <img className="Clogo" src={logo}  alt="company logo"/>
+            </Banner>
          <form onSubmit={handleSubmit}>
             <HeaderLogin> Sign Up</HeaderLogin>
             <Info type="text" name="username" value={User.username} onChange={handleChange}/>

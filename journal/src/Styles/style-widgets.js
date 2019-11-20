@@ -41,17 +41,26 @@ border-radius: 7px;
 background-color: #0b607b;
 padding : 4px;
 text-align: center;  
-  &:hover {
-    background-color: white;
-  }
+
 
 `;
 
 export const Container = styled.body`
-  background-color: #477c7c;
+  background: linear-gradient(40deg);
+  height: 100%;
+  width: 100%;
   height: 40rem;
   width: auto;
-  border: #28a40e;
+  
   padding: 2rem;
   align-content: center;
+  background-color: #0b607b;
+  
+  `;
+export const Banner = styled.div`
+  height: 5rem;
+  width: auto;
+  background-color: #477c7c;
+  border-radius: 7px;
+  border: 2px solid #FFF4A6
 `;

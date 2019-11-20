@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import api from "../utils/api"
-import { Button, HeaderLogin , Info, Container } from "../Styles/style-widgets";
+import { Button, HeaderLogin , Info, Container, Banner } from "../Styles/style-widgets";
 import logo from '../Styles/logo.png'
 
 
@@ -40,8 +40,11 @@ function AdminLogin(props){
     }
 
     return(
+        
         <Container>
+            <Banner>
             <img className="Clogo" src={logo}  alt="company logo"/>
+            </Banner>
         <form onSubmit={handleSubmit}>
             <HeaderLogin> Admin Login</HeaderLogin>
             <Info type="text" name="username" value={login.username} onChange={handleChange}/>

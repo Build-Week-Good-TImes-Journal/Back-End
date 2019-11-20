@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import api from "../utils/api";
-import { Button, HeaderLogin, Info, Container,  } from "../Styles/style-widgets";
+import { Button, HeaderLogin, Info, Container, Banner } from "../Styles/style-widgets";
 import logo from "../Styles/logo.png";
 
 function UsersLogin(props) {
@@ -37,17 +37,16 @@ function UsersLogin(props) {
   };
 
   return (
+   
     <Container>
-      <img className="Clogo"
-        
-        src={logo}
+       <Banner>
+       
       
-        alt="company logo"
-      />
+      <img className="Clogo" src={logo} alt="company logo" />
+      </Banner>
       <form onSubmit={handleSubmit}>
         <HeaderLogin>Login</HeaderLogin>
 
-        
         <Info
           type="text"
           name="username"
@@ -60,11 +59,11 @@ function UsersLogin(props) {
           value={login.password}
           onChange={handleChange}
         />
-     
+  
         <Button type="submit">Login</Button>
-        
       </form>
     </Container>
+  
   );
 }
 export default UsersLogin;
