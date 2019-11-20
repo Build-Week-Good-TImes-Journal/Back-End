@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import api from "../utils/api"
 import { Button, HeaderLogin , Info, Container } from "../Styles/style-widgets";
+import logo from '../Styles/logo.png'
 
 
 function AdminLogin(props){
@@ -40,6 +41,7 @@ function AdminLogin(props){
 
     return(
         <Container>
+            <img className="logo" src={logo} height="55"  alt="company logo"/>
         <form onSubmit={handleSubmit}>
             <HeaderLogin> Admin Login</HeaderLogin>
             <Info type="text" name="username" value={login.username} onChange={handleChange}/>

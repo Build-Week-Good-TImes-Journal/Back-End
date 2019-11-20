@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import api from "../utils/api";
-import { Button, HeaderLogin , Info, Container } from "../Styles/style-widgets";
+import { Button, HeaderLogin, Info, Container } from "../Styles/style-widgets";
+import logo from '../Styles/logo.png'
 
 function UsersLogin(props) {
   const [error, setError] = useState();
@@ -37,6 +38,7 @@ function UsersLogin(props) {
 
   return (
     <Container>
+     <img className="logo" src={logo} height="55" alt="company logo"/>
       <form onSubmit={handleSubmit}>
         <HeaderLogin>Login</HeaderLogin>
         <Info
