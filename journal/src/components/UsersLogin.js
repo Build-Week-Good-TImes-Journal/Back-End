@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import api from "../utils/api";
-import { Button, HeaderLogin, Info, Container } from "../Styles/style-widgets";
-import logo from '../Styles/logo.png'
+import { Button, HeaderLogin, Info, Container,  } from "../Styles/style-widgets";
+import logo from "../Styles/logo.png";
 
 function UsersLogin(props) {
   const [error, setError] = useState();
@@ -38,9 +38,16 @@ function UsersLogin(props) {
 
   return (
     <Container>
-     <img className="logo" src={logo} height="55" alt="company logo"/>
+      <img className="Clogo"
+        
+        src={logo}
+      
+        alt="company logo"
+      />
       <form onSubmit={handleSubmit}>
         <HeaderLogin>Login</HeaderLogin>
+
+        
         <Info
           type="text"
           name="username"
@@ -53,7 +60,9 @@ function UsersLogin(props) {
           value={login.password}
           onChange={handleChange}
         />
+     
         <Button type="submit">Login</Button>
+        
       </form>
     </Container>
   );

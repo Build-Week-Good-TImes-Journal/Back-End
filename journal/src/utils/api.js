@@ -1,13 +1,14 @@
-import axios from "axios"
+import axios from "axios";
 
-export function getToken(){
-    return localStorage.getItem("token")
+export function getToken() {
+    return localStorage.getItem("token");
 }
 
-export default function(){
+export default function() {
     return axios.create({
-        baseURL:"http://localhost:4020",
-        headers:
-            {Authorization: getToken()}
-    })
+        baseURL: "http://localhost:4020",
+        headers: {
+            Authorization: getToken()
+        }
+    });
 }
