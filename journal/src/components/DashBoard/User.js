@@ -1,6 +1,5 @@
 import React,{useState, useEffect} from "react"
-import api from "../utils/api"
-import Header from "./Header"
+import api from "../../utils/api";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
