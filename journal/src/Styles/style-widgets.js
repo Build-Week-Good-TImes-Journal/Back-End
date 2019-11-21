@@ -13,19 +13,19 @@ export const Button = styled.button`
   }
 
 `;
-// export const ActLink = styled.link`
-//   display: flex;
-//   border-radius: 7px;
-//   background-color: #0b607b
-//   color: #FF3238
-//   border: 1px solid #FFF4A6;
-//   margin: 2rem auto;
-//   &:hover {
-//     background-color: #28A40E;
-//     transform: 1rem;
-//   }
+export const ActLink = styled.link`
+   display: flex;
+   border-radius: 7px;
+   background-color: #0b607b
+   color: #FF3238
+   border: 1px solid #FFF4A6;
+   margin: 2rem auto;
+   &:hover {
+     background-color: #28A40E;
+     transform: 1rem;
+   }
 
-// `;
+ `;
 
 export const HeaderLogin = styled.h1`
   display: flex;
@@ -80,14 +80,14 @@ export const Container = styled.body`
 
 export const ActInfo = styled.h2`
   font-family: "typewriter";
-  color: #FFF4A6
+  color: #fff4a6;
 `;
 
 export const ActInfo2 = styled.p`
   font-family: "typewriter";
-  color: #FFF4A6
+  color: #fff4a6;
 `;
 export const ActInfo3 = styled.h4`
   font-family: "typewriter";
-  color: #FFF4A6
+  color: #fff4a6;
 `;
