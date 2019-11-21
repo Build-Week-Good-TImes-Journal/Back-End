@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react"
 import api from "../utils/api"
+import { Button, HeaderLogin , Info, Container, ActInfo3 } from "../Styles/style-widgets"
 
 
 
@@ -45,15 +46,15 @@ function User(props){
    
 
     return(
-        <div>
-            <h4>User name: {user.username}</h4>
-            <h4>updated_at: {user.updated_at}</h4>
+        <Container>
+            <ActInfo3>User name: {user.username}</ActInfo3>
+            <ActInfo3>updated_at: {user.updated_at}</ActInfo3>
              <form onSubmit={handleSubmit}>
-                 <input type="text" name="username" value={user.username} onChange={handleChange}/>
-                 <input type="number" name="role" value={user.role} onChange={handleChange}/>
-                 <button type="submit">save</button>
+                 <Info type="text" name="username" value={user.username} onChange={handleChange}/>
+                 <Info type="number" name="role" value={user.role} onChange={handleChange}/>
+                 <Button type="submit">save</Button>
              </form>
-        </div>
+        </Container>
     )
 }
 

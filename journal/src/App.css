@@ -33,6 +33,7 @@
   font-size: 2.5rem;
   color: #fff4a6;
 }
+
 .Clogo {
   display: flex;
   border-radius: 7px;
@@ -43,6 +44,15 @@
 .Info {
   display: flex;
 }
-.Title {
-  font-size: 20px;
+
+.addActivity{
+  text-decoration: none;
+  border-radius: 7px;
+  background-color: #0b607b;
+  color: #FF3238;
+  border: 1px solid #FFF4A6;
+  margin: 2rem auto;
+  padding: 3px;
+ 
 }
+

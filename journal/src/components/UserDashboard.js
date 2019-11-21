@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../utils/api";
 import { Link } from "react-router-dom";
-import { Container, HeaderLogin } from "../Styles/style-widgets";
+import { Container, HeaderLogin, ActInfo } from "../Styles/style-widgets";
 
 function UserDashboard(props) {
   const user_id = JSON.parse(window.localStorage.getItem("user id"));
@@ -28,11 +28,13 @@ function UserDashboard(props) {
       <HeaderLogin>{message}</HeaderLogin>
       {user.map(activity => (
         <div key={activity.id}>
-          <h2>{activity.name}</h2>
-          <h2>{activity.description}</h2>
+          <ActInfo>{activity.name}</ActInfo>
+          <ActInfo>{activity.description}</ActInfo>
         </div>
       ))}
-      <Link to={`/userdashboard/${user_id}/addactivity`}>Add Activity</Link>
+      <Link className="addActivity" to={`/userdashboard/${user_id}/addactivity`}>
+        Add Activity
+      </Link>
     </Container>
   );
 }
