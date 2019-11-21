@@ -40,7 +40,7 @@ const handleSubmit=(e)=>{
             <HeaderLogin> Sign Up</HeaderLogin>
             <Info type="text" name="username" value={User.username} onChange={handleChange}/>
             <Info type="password" name="password" value={User.password} onChange={handleChange}/>
-            <Button type="submit">Login</Button>
+            <Button type="submit">Sign Up</Button>
         </form>
         </Container>
     )

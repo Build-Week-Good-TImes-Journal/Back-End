@@ -40,8 +40,6 @@ function UsersLogin(props) {
    
     <Container>
        <Banner>
-       
-      
       <img className="Clogo" src={logo} alt="company logo" />
       </Banner>
       <form onSubmit={handleSubmit}>

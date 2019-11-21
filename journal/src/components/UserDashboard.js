@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react"
 import api from "../utils/api"
 import {Link} from "react-router-dom"
+import { Container, HeaderLogin, Banner } from "../Styles/style-widgets";
 
 function UserDashboard(props){
     const user_id = JSON.parse(window.localStorage.getItem("user id"))
@@ -25,17 +26,17 @@ function UserDashboard(props){
     },[user_id])
     
     return(
-        <div>
-            <h1>{message}</h1>
+        <Container>
+            <HeaderLogin>{message}</HeaderLogin>
             {user.map(activity=>(
-                <div key={activity.id}>
+                <Banner key={activity.id}>
                  <h2>{activity.name}</h2>
                  <h2>{activity.description}</h2>
-                </div>
+                </Banner>
                 
             ))}
             <Link to={`/userdashboard/${user_id}/addactivity`}>Add Activity</Link>
-        </div>
+        </Container>
     )
 }
 

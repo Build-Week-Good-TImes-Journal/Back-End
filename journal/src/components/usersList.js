@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from "react"
 import api from "../utils/api"
 import {Link} from "react-router-dom"
+import { Button, Container, HeaderLogin, Banner } from "../Styles/style-widgets";
 
 
 function Users(props){
@@ -36,17 +37,17 @@ function Users(props){
     }
 
     return(
-        <div>
-            <h1>{message}</h1>
+        <Container>
+            <HeaderLogin>{message}</HeaderLogin>
             {users.map(user=>(
-                <div key={user.id}>
+                <Banner key={user.id}>
                     <p>User Name: {user.username}  <br/>   Role: {user.role}  <br/> Created At: {user.created_at}</p> 
-                    <button onClick={(e)=>handleDelete(e, user.id)}>delete</button>
+                    <Button onClick={(e)=>handleDelete(e, user.id)}>delete</Button>
                     <Link to={`/users/${user.id}`}>Edit</Link>
                     
-                </div>
+                </Banner>
             ))}
-        </div>
+        </Container>
     )
 }
 
