@@ -1,35 +1,58 @@
 .logo {
-    height: 6rem;
-    width: 10rem;
-    margin-left: 1rem;
-    border-radius: .5rem;
+  height: 6rem;
+  width: 10rem;
+  margin-left: 1rem;
+  border-radius: 0.5rem;
 }
 
 .navBar {
-    background-color: #0B607B;
-    padding: .5rem;
-    display: flex;
+  background-color: #0b607b;
+  padding: 0.5rem;
+  display: flex;
 }
 
 .navBtn {
-    height: 4rem;
-    width: 8rem;
-    border-radius: .5rem;
-    color: #0B607B;
-    background-color: #FFF4A6;
-    display: flex;
-    justify-content: center;
-    margin-right: 1rem;
+  height: 4rem;
+  width: 8rem;
+  border-radius: 0.5rem;
+  color: #0b607b;
+  background-color: #fff4a6;
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
 }
 
 .btnContainer {
-    display: flex;
-    align-items: center;
-    margin-left: 15rem;
+  display: flex;
+  align-items: center;
+  margin-left: 15rem;
 }
 
 .navTitle {
-    margin-left: 37rem;
-    font-size: 2.5rem;
-    color: #FFF4A6;
+  margin-left: 37rem;
+  font-size: 2.5rem;
+  color: #fff4a6;
 }
+
+.Clogo {
+  display: flex;
+  border-radius: 7px;
+  height: 5rem;
+  margin: auto;
+}
+
+.Info {
+  display: flex;
+}
+
+.addActivity{
+  text-decoration: none;
+  border-radius: 7px;
+  background-color: #0b607b;
+  color: #FF3238;
+  border: 1px solid #FFF4A6;
+  margin: 2rem auto;
+  padding: 3px;
+ 
+}
+
