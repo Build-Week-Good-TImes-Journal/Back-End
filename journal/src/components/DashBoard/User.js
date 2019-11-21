@@ -46,7 +46,7 @@ function User(props){
 
     return(
         <div>
-            <Header/>
+            {/*<Header/>*/}
             
             <br/><br/><h4>User name: {user.username}</h4>
             <h4>updated_at: {user.updated_at}</h4>

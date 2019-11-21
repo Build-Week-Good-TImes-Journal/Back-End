@@ -1,8 +1,8 @@
 import React,{useState, useEffect} from "react";
 import api from '../../utils/api';
 import {Link} from "react-router-dom";
-import Header from "./Header"
-import {Contain} from "./StyledWidgits"
+// import Header from "./Header"
+import { Contain } from '../Styles/Styles';
 import Table from '@material-ui/core/Table';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
@@ -42,7 +42,7 @@ function Users(props){
 
     return(
         <div>
-            <Header/>
+            {/*<Header/>*/}
             <h1>{message}</h1>
             {users.map(user=>(
                 <div key={user.id}>

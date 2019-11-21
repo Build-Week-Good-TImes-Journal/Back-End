@@ -17,7 +17,7 @@ const AppRouting = () => {
     return (
         <div>
 
-            <Route exact path="/" component={FormikLoginForm} />
+            {/*<Route exact path="/" component={FormikLoginForm} />*/}
             <Route exact path="/admin-login" component={AdminLogin}/>
             <Route exact path="/User-login" component={UsersLogin}/>
             <Route exact path="/signup" component={SignUp}/>
