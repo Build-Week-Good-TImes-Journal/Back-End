@@ -9,7 +9,7 @@ import User from "./components/user"
 import UserLogin from "./components/UsersLogin"
 import UserDashboard from"./components/UserDashboard"
 import Addactivity from "./components/Addactivity"
-
+import ReflectionForm from "./components/Reflections/Reflections"
 
 
 
@@ -24,6 +24,7 @@ function App() {
       <Route exact path="/userdashboard/:id" component={UserDashboard}/>
       <Route exact path="/users/:id" component={User}/>
       <Route exact path="/userdashboard/:id/addactivity" component={Addactivity}/>
+      <Route exact path="/AddReflection" component={ReflectionForm}/>
       
     </div>
   );

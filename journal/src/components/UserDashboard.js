@@ -35,6 +35,9 @@ function UserDashboard(props) {
       <Link className="addActivity" to={`/userdashboard/${user_id}/addactivity`}>
         Add Activity
       </Link>
+      <Link to="/AddReflection">
+        Click Me
+      </Link>
     </Container>
   );
 }
