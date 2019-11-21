@@ -33,11 +33,11 @@ const handleSubmit=(e)=>{
 
     return(
         <Container>
-            <Banner>
+            
             <img className="Clogo" src={logo}  alt="company logo"/>
-            </Banner>
+            
          <form onSubmit={handleSubmit}>
-            <HeaderLogin> Sign Up</HeaderLogin>
+            <HeaderLogin className="Title"> Sign Up</HeaderLogin>
             <Info type="text" name="username" value={User.username} onChange={handleChange}/>
             <Info type="password" name="password" value={User.password} onChange={handleChange}/>
             <Button type="submit">Sign Up</Button>

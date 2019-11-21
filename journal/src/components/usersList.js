@@ -40,12 +40,11 @@ function Users(props){
         <Container>
             <HeaderLogin>{message}</HeaderLogin>
             {users.map(user=>(
-                <Banner key={user.id}>
+                <div key={user.id}>
                     <p>User Name: {user.username}  <br/>   Role: {user.role}  <br/> Created At: {user.created_at}</p> 
                     <Button onClick={(e)=>handleDelete(e, user.id)}>delete</Button>
                     <Link to={`/users/${user.id}`}>Edit</Link>
-                    
-                </Banner>
+                </div>
             ))}
         </Container>
     )

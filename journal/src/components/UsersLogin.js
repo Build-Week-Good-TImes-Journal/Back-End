@@ -39,11 +39,11 @@ function UsersLogin(props) {
   return (
    
     <Container>
-       <Banner>
+      
       <img className="Clogo" src={logo} alt="company logo" />
-      </Banner>
+      
       <form onSubmit={handleSubmit}>
-        <HeaderLogin>Login</HeaderLogin>
+        <HeaderLogin className="Title">Login</HeaderLogin>
 
         <Info
           type="text"

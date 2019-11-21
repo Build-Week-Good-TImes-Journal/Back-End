@@ -42,11 +42,11 @@ function AdminLogin(props){
     return(
         
         <Container>
-            <Banner>
+            
             <img className="Clogo" src={logo}  alt="company logo"/>
-            </Banner>
+         
         <form onSubmit={handleSubmit}>
-            <HeaderLogin> Admin Login</HeaderLogin>
+            <HeaderLogin className="Title"> Admin Login</HeaderLogin>
             <Info type="text" name="username" value={login.username} onChange={handleChange}/>
             <Info type="password" name="password" value={login.password} onChange={handleChange}/>
             <Button type="submit">Login</Button>
