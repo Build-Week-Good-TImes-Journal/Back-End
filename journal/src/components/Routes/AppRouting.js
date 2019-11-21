@@ -10,10 +10,11 @@ import Users from "../DashBoard/AdminDashboard";
 import UserDashboard from "../DashBoard/UserDashboard";
 import User from "../DashBoard/User";
 import Addactivity from "../Activites/Activity";
+import Editform from "../Activites/Editactivity";
 
-const AppRouting = () => {
+const AppRouting = (props) => {
 
-
+console.log(props);
     return (
         <div>
 
@@ -25,7 +26,9 @@ const AppRouting = () => {
             <ProtectedRoute exact path="/users" component={Users}/>
             <ProtectedRoute exact path="/userdashboard/:id" component={UserDashboard}/>
             <ProtectedRoute exact path="/users/:id" component={User}/>
+            <ProtectedRoute exact path="/activity/:id" component={Editform}/>
             <ProtectedRoute exact path="/userdashboard/:id/addactivity" component={Addactivity}/>
+            {/*<Route exact path="/AddReflection" component={ReflectionForm}/>*/}
             
         </div>
     )
