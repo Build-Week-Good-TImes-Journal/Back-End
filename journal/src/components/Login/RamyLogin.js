@@ -1,6 +1,6 @@
 import React,{useState} from "react";
-import api from "../utils/api"
-import Header from "./Header"
+import api from '../../utils/api';
+// import Header from "./Header"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -41,7 +41,7 @@ function UsersLogin(props){
 
     return(
         <div> 
-            <Header/>
+            {/*<Header/>*/}
             <form onSubmit={handleSubmit}>
                 <br/><br/><h3>Login</h3>
                 <TextField label="User Name" type="text" name="username" placeholder="User Name" value={login.username} onChange={handleChange}/><br/><br/>

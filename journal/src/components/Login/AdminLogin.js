@@ -1,6 +1,6 @@
 import React,{useState} from "react";
-import api from "../utils/api"
-import Header from "./Header"
+import api from "../../utils/api"
+// import Header from "./Header"
 import {Link} from "react-router-dom"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -41,7 +41,7 @@ function AdminLogin(props){
     return(
 
         <div>
-            <Header/>
+            {/*<Header/>*/}
             <Link to="/">Home</Link>
             <form onSubmit={handleSubmit}>
                 <br/><br/><h3> Admin Login</h3>
