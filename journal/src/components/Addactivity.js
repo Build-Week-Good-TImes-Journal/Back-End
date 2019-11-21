@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react"
 import api from "../utils/api"
+import { Container, HeaderLogin, Info, Button } from "../Styles/style-widgets";
 
 function Addactivity(){
     const user_id = JSON.parse(window.localStorage.getItem("user id"))
@@ -33,8 +34,8 @@ function Addactivity(){
         })
     }
     return(
-        <div>
-            <h1>Add Activity</h1>
+        <Container>
+            <HeaderLogin>Add Activity</HeaderLogin>
             {/* <form onSubmit={handleSubmit}>
                 <select name="activites" onChange={handleChange}>
                     <option value="outdoor">Outdoor</option>
@@ -51,11 +52,11 @@ function Addactivity(){
 
 
             <form onSubmit={handleSubmit}>
-                <input type="text" name="name" value={activity.name} onChange={handleChange}/>
-                <input type="text" name="description" value={activity.description} onChange={handleChange}/>
-                <button type="submit">Add activity</button>
+                <Info type="text" name="name" value={activity.name} onChange={handleChange}/>
+                <Info type="text" name="description" value={activity.description} onChange={handleChange}/>
+                <Button type="submit">Add activity</Button>
             </form>
-        </div>
+        </Container>
         
       
     )

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../utils/api";
 import { Link } from "react-router-dom";
-import { Container, HeaderLogin, Banner } from "../Styles/style-widgets";
+import { Container, HeaderLogin } from "../Styles/style-widgets";
 
 function UserDashboard(props) {
   const user_id = JSON.parse(window.localStorage.getItem("user id"));
