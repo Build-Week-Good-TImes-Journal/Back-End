@@ -3,6 +3,7 @@ import api from "../../utils/api";
 import { Link, withRouter} from "react-router-dom"
 import ProtectedRoute from "../Routes/ProtectedRoute";
 // import Header from "./Header"
+// import UserDb from "./UserDb"
 
 
 function UserDashboard(props){
@@ -11,18 +12,20 @@ function UserDashboard(props){
     const[message,setMessage]=useState("");
 
     const Store = JSON.parse(window.localStorage.getItem("user message"));
-
+    
     const [user,setUser]=useState({
         username: name,
         activites: []
     });
     const{id}=props.match.params;
 
+
+
     useEffect(()=>{
         api()
         .get(`/api/activities/${user.username}`)
         .then(res=>{
-            console.log(res);
+            // console.log(res);
             setUser({
                 ...user,
                 activites: res.data
@@ -34,11 +37,12 @@ function UserDashboard(props){
             console.log(err)
         })
     },[]);
-    console.log(user.activites);
+    // console.log(user.activites);
     return (
         <div>
-            {/*<Header/>*/}
-            {/*<h1>{message}</h1>*/}
+            {/* <UserDb/> */}
+            {/* <Header/> */}
+            {/* <h1>{message}</h1> */}
             {user.activites.map(activity=>(
                 <div key={activity.id}>
                  <Link to={`/activity/${activity.name}`}>
