@@ -2,14 +2,14 @@ import React,{useState,useEffect} from "react";
 import api from "../../utils/api";
 import { Link, withRouter} from "react-router-dom"
 import ProtectedRoute from "../Routes/ProtectedRoute";
-<<<<<<< HEAD
+
 // import Header from "./Header"
 // import UserDb from "./UserDb"
 
-=======
+
 import { Container, HeaderLogin, ActInfo, ActInfo2, ActInfo3 } from "../../Styles/style-widgets";
 import logo from "../../Images/Zone.png"
->>>>>>> bb3fe763380d1ee8a76a2d4cb53494d54831772b
+
 
 function UserDashboard(props){
     const name = localStorage.getItem("username");
@@ -44,10 +44,17 @@ function UserDashboard(props){
     },[]);
     // console.log(user.activites);
     return (
+
+        <Container>
+            <img className="Clogo" src={logo} alt="company logo" />
+            <HeaderLogin>Your Activities</HeaderLogin>
+            
+
         <div>
             {/* <UserDb/> */}
             {/* <Header/> */}
             {/* <h1>{message}</h1> */}
+
             {user.activites.map(activity=>(
                 <div key={activity.id}>
                  <Link to={`/activity/${activity.name}`}>

@@ -11,11 +11,11 @@ import UserDashboard from "../DashBoard/UserDashboard";
 import User from "../DashBoard/User";
 import Addactivity from "../Activites/Activity";
 import Editform from "../Activites/Editactivity";
-<<<<<<< HEAD
+
 import UserDb from "../DashBoard/UserDb"
-=======
+
 import ReflectionForm from "../Reflections/Reflections"
->>>>>>> bb3fe763380d1ee8a76a2d4cb53494d54831772b
+
 
 const AppRouting = (props) => {
 
@@ -33,13 +33,11 @@ console.log(props);
             <ProtectedRoute exact path="/users/:id" component={User}/>
             <ProtectedRoute exact path="/activity/:id" component={Editform}/>
             <ProtectedRoute exact path="/userdashboard/:id/addactivity" component={Addactivity}/>
-<<<<<<< HEAD
+
             {/* <Route exact path="/AddReflection" component={ReflectionForm}/> */}
             <Route exact path="/userdb/:id" component={UserDb}/>
-=======
+
             <Route exact path="/AddReflection" component={ReflectionForm}/>
->>>>>>> bb3fe763380d1ee8a76a2d4cb53494d54831772b
-            
         </div>
     )
 

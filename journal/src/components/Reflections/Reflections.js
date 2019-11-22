@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
 import { Link } from "react-router-dom";
-import { Container, ActInfo, ActInfo2, Button } from "../../Styles/style-widgets";
+import {
+  Container,
+  ActInfo,
+  ActInfo2,
+  Select
+} from "../../Styles/style-widgets";
+import logo from "../../Styles/logo.png"
 
 function ReflectionForm() {
   const user_id = JSON.parse(window.localStorage.getItem("user id"));
@@ -50,16 +56,29 @@ function ReflectionForm() {
   return (
     <Container>
       <ActInfo>Add your relflections here!</ActInfo>
+      <img className="Clogo" src={logo}/>
       <form onSubmit={handleSubmit}>
         <textarea
           className="textArea"
           type="text"
           name="reflection"
           value={newReflection.reflection}
-          placeholder="How was your week"
+          placeholder="How was your week?"
           onChange={handleChange}
         />
-        <button className="refButton" type="submit">Add Reflection</button>
+        <Select>
+          <option value="" hidden>
+            Pick One!
+          </option>
+          <option value="1">&#128515;</option>
+          <option value="2">&#128524;</option>
+          <option value="3">&#128532;</option>
+          <option value="4">&#128553;</option>
+        </Select>
+
+        <button className="refButton" type="submit">
+          Add Reflection
+        </button>
       </form>
 
       {reflection.map(reflection => (

@@ -59,6 +59,8 @@
   border-radius: 4px;
   width: 16.5rem;
   height: 7rem;
+  display: flex;
+  margin: 1% auto;
 }
 
 .refButton{
@@ -68,5 +70,6 @@
   color: #FF3238;
   border: 1px solid #FFF4A6;
   justify-content: left;
-  margin-left: 5.5rem;
+  margin: 2% auto;
+  
 }
