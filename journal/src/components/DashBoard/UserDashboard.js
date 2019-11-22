@@ -27,6 +27,7 @@ function UserDashboard(props){
                 ...user,
                 activites: res.data
             });
+            localStorage.setItem("allActivites", JSON.stringify(res.data));
             setMessage(Store)
         })
         .catch(err=>{

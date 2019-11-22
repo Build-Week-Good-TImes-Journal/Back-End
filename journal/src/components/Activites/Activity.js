@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 function Addactivity(props){
     const user_name = JSON.parse(window.localStorage.getItem("username"));
     const{id}=props.match.params;
-
+console.log(id);
     const[activity,setActivity]=useState({
         name:"",
         description:"",
@@ -29,7 +29,7 @@ function Addactivity(props){
             .post(`/api/activities/${user_name}`, activity)
             .then(res=>{
                 console.log(res);
-                // localStorage.setItem("add activity",JSON.stringify(res.config.data))
+                // localStorage.setItem("add activity",JSON.stringify(res.data))
                 props.history.push(`/userdashboard/${id}`)
             })
 
