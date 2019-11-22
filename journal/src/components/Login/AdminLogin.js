@@ -1,9 +1,13 @@
 import React,{useState} from "react";
 import api from "../../utils/api"
-// import Header from "./Header"
 import {Link} from "react-router-dom"
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import {
+    Container,
+    ActInfo,
+    ActInfo2,
+    Select,
+    Button, Info, HeaderLogin
+  } from "../../Styles/style-widgets";
 
 function AdminLogin(props){
 
@@ -40,16 +44,16 @@ function AdminLogin(props){
 
     return(
 
-        <div>
+        <Container>
             {/*<Header/>*/}
-            <Link to="/">Home</Link>
+            <Link className="Homelink"to="/">Home</Link>
             <form onSubmit={handleSubmit}>
-                <br/><br/><h3> Admin Login</h3>
-                 <TextField label="User Name" type="text" name="username" placeholder="User Name" value={login.username} onChange={handleChange}/><br/><br/>
-                 <TextField label="Password" type="password" name="password" placeholder="Password" value={login.password} onChange={handleChange}/><br/><br/>
+                <br/><br/><HeaderLogin> Admin Login</HeaderLogin>
+                 <Info  label="User Name" type="text" name="username" placeholder="User Name" value={login.username} onChange={handleChange}/><br/><br/>
+                 <Info  label="Password" type="password" name="password" placeholder="Password" value={login.password} onChange={handleChange}/><br/><br/>
                  <Button type="submit">Login</Button>
              </form>
-        </div>
+        </Container>
         
     )
 }

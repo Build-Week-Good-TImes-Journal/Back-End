@@ -1,7 +1,6 @@
 import React,{useState, useEffect} from "react";
 import { withRouter } from 'react-router-dom';
 import api from '../../utils/api';
-// import Header from "./Header"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { HeaderLogin } from "../../Styles/style-widgets";

@@ -7,7 +7,7 @@ import {
   ActInfo2,
   Select
 } from "../../Styles/style-widgets";
-import logo from "../../Styles/logo.png"
+import logo from "../../Styles/logo.png";
 
 function ReflectionForm() {
   const user_id = JSON.parse(window.localStorage.getItem("user id"));
@@ -55,8 +55,8 @@ function ReflectionForm() {
   console.log(reflection);
   return (
     <Container>
+      <img className="Clogo" src={logo} />
       <ActInfo>Add your relflections here!</ActInfo>
-      <img className="Clogo" src={logo}/>
       <form onSubmit={handleSubmit}>
         <textarea
           className="textArea"
