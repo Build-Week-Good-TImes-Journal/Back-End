@@ -1,7 +1,7 @@
 import React,{ useState } from "react"
 import api from "../../utils/api"
 import { Button, Container, Info, HeaderLogin } from "../../Styles/style-widgets";
-
+import logo from '../../Styles/logo.png'
 
 function SignUp(props){
 const[User,SetUser]=useState({
@@ -34,6 +34,7 @@ const handleSubmit=(e)=>{
     return(
         <Container>
             {/*<Header/>*/}
+            <img className="Clogo" src={logo}/>
             <form onSubmit={handleSubmit}>
                 <br/><br/><HeaderLogin> Sign Up</HeaderLogin>
                 <Info
