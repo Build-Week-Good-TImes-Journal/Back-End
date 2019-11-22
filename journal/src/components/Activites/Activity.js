@@ -9,7 +9,9 @@ import { HeaderLogin } from "../../Styles/style-widgets";
 
 function Addactivity(props){
     const user_name = JSON.parse(window.localStorage.getItem("username"));
-    const{id}=props.match.params;
+    console.log(props.match.params.id)
+    const id=props.match.params.id;
+    
 console.log(id);
     const[activity,setActivity]=useState({
         name:"",
