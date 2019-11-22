@@ -29,7 +29,7 @@ export const ActLink = styled.link`
 
 export const HeaderLogin = styled.h1`
   display: flex;
-  font-family: Roboto ;
+  font-family: Helvetica ;
   color: #FFF4A6
   border: 1px solid #FFF4A6;
   width: 7rem;
@@ -46,14 +46,14 @@ export const HeaderLogin = styled.h1`
 
 export const Info = styled.input`
 display: flex;
-margin: 1rem auto;
+margin: 1% auto;
 font-family: Roboto ;
 color: #FFF4A6
 border: 1px solid #FFF4A6;
 width: 7rem;
 border-radius: 7px;
 background-color: #0b607b;
-padding : 4px;
+// padding : 4px;
 text-align: center;  
 &:hover {
   background-color: #FF3238;
@@ -70,8 +70,6 @@ export const Container = styled.body`
     rgba(71, 124, 124, 1) 100%
   );
   height: 100%;
-  width: 100%;
-  height: 100%;
   width: auto;
   padding: 2rem;
   align-content: center;
@@ -79,34 +77,37 @@ export const Container = styled.body`
 `;
 
 export const ActInfo = styled.h2`
-  font-family: "typewriter";
+  font-family: "Helvetica";
   color: #fff4a6;
   display: flex;
   justify-content: center;
 `;
 
 export const ActInfo2 = styled.p`
-  font-family: "typewriter";
+  font-family: "Helvetica";
   color: #fff4a6;
   display: flex;
   justify-content: center;
 `;
 export const ActInfo3 = styled.h4`
-  font-family: "typewriter";
+  font-family: "Helvetica";
   color: #fff4a6;
   display: flex;
   justify-content: center;
 `;
 export const Select = styled.select`
+  display: flex;
   width: 5rem;
-  height: auto;
+  height: 1.25rem;
   background: white;
   color: gray;
   padding-left: 5px;
   font-size: 14px;
   border: none;
   margin-left: 10px;
-  
+  border-radius: 5px;
+  margin: 1% auto;
+
   option {
     color: black;
     background: white;

@@ -30,7 +30,6 @@ console.log(props);
             <ProtectedRoute exact path="/activity/:id" component={Editform}/>
             <ProtectedRoute exact path="/userdashboard/:id/addactivity" component={Addactivity}/>
             <Route exact path="/AddReflection" component={ReflectionForm}/>
-            
         </div>
     )
 
