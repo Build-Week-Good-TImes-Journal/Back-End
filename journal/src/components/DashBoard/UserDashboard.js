@@ -2,8 +2,8 @@ import React,{useState,useEffect} from "react";
 import api from "../../utils/api";
 import { Link, withRouter} from "react-router-dom"
 import ProtectedRoute from "../Routes/ProtectedRoute";
-// import Header from "./Header"
-
+import { Container, HeaderLogin, ActInfo, ActInfo2, ActInfo3 } from "../../Styles/style-widgets";
+import logo from "../../Images/Zone.png"
 
 function UserDashboard(props){
     const name = localStorage.getItem("username");
@@ -36,22 +36,23 @@ function UserDashboard(props){
     },[]);
     console.log(user.activites);
     return (
-        <div>
+        <Container>
+            <img className="Clogo" src={logo} alt="company logo" />
             {/*<Header/>*/}
             {/*<h1>{message}</h1>*/}
             {user.activites.map(activity=>(
                 <div key={activity.id}>
                  <Link to={`/activity/${activity.name}`}>
-                 <h2>{activity.name}</h2>
+                 <ActInfo>{activity.name}</ActInfo>
                  </Link>
-                 <h2>{activity.description}</h2>
-                 <h3>{activity.created_at}</h3>
-                 <h3>{activity.updated_at}</h3>
+                 <ActInfo2>{activity.description}</ActInfo2>
+                 <ActInfo3>{activity.created_at}</ActInfo3>
+                 <ActInfo3>{activity.updated_at}</ActInfo3>
                 </div>
 
             ))}
             <Link to={`/userdashboard/${id}/addactivity`}>Add Activity</Link>
-        </div>
+        </Container>
     )
 }
 

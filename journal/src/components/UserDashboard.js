@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import api from "../utils/api";
 import { Link } from "react-router-dom";
 import { Container, HeaderLogin, ActInfo } from "../Styles/style-widgets";
-
+import logo from "../Styles/logo.png";
 function UserDashboard(props) {
   const user_id = JSON.parse(window.localStorage.getItem("user id"));
   const [message, setMessage] = useState("");
@@ -25,19 +25,22 @@ function UserDashboard(props) {
 
   return (
     <Container>
+      
       <HeaderLogin>{message}</HeaderLogin>
       {user.map(activity => (
         <div key={activity.id}>
+          <img className ="Clogo"src={logo} alt="company logo" />
           <ActInfo>{activity.name}</ActInfo>
           <ActInfo>{activity.description}</ActInfo>
         </div>
       ))}
-      <Link className="addActivity" to={`/userdashboard/${user_id}/addactivity`}>
+      <Link
+        className="addActivity"
+        to={`/userdashboard/${user_id}/addactivity`}
+      >
         Add Activity
       </Link>
-      <Link to="/AddReflection">
-        Click Me
-      </Link>
+      <Link to="/AddReflection">Click Me</Link>
     </Container>
   );
 }

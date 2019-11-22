@@ -43,7 +43,7 @@ function UsersLogin(props) {
 
   return (
     <Container>
-      <img className="Clogo" src={logo} alt="company logo" />
+      <img className="logo" src={logo} alt="company logo" />
       <form onSubmit={handleSubmit}>
         <HeaderLogin className="Title">Login</HeaderLogin>
         <Info
