@@ -34,10 +34,7 @@ border-radius: 7px;
 font-family: monospace, ubuntu;
 height: 500px;
 `
-const Fields = styled.input`
-margin: 2px;
-border-radius: 3px;
-`
+
 
 function LoginForm({ values, errors, touched }) {
   return (

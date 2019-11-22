@@ -1,6 +1,6 @@
 import React from 'react';
 import Zone from "../../Images/Zone.png"
-
+import styled
 
 function Nav() {
 

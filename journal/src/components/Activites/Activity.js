@@ -4,6 +4,7 @@ import api from '../../utils/api';
 // import Header from "./Header"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { HeaderLogin } from "../../Styles/style-widgets";
 
 
 function Addactivity(props){
@@ -40,7 +41,7 @@ console.log(id);
     return(
         <div>
             {/*<Header/>*/}
-            <h1>Add Activity</h1>
+            <HeaderLogin>Add Activity</HeaderLogin>
             <br/><br/><form onSubmit={handleSubmit}>
             <span>Name of the activity : </span><TextField label="Name" type="text" name="name" value={activity.name} onChange={handleChange}/><br/><br/>
             <span>Description of the activity : </span><TextField label="Description" type="text" name="description" value={activity.description} onChange={handleChange}/><br/><br/>
