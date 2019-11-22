@@ -39,7 +39,7 @@ export const HeaderLogin = styled.h1`
   padding : 20px;
   text-align: center;
   justify-content: center;
-  
+  text-decoration: none;
  
 
 `;
@@ -81,13 +81,19 @@ export const Container = styled.body`
 export const ActInfo = styled.h2`
   font-family: "typewriter";
   color: #fff4a6;
+  display: flex;
+  justify-content: center;
 `;
 
 export const ActInfo2 = styled.p`
   font-family: "typewriter";
   color: #fff4a6;
+  display: flex;
+  justify-content: center;
 `;
 export const ActInfo3 = styled.h4`
   font-family: "typewriter";
   color: #fff4a6;
+  display: flex;
+  justify-content: center;
 `;
