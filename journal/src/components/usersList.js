@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from "react"
 import api from "../utils/api"
 import {Link} from "react-router-dom"
-import { Button, Container, HeaderLogin, Banner, ActInfo2 } from "../Styles/style-widgets";
+import { Button, Container, HeaderLogin, ActInfo2 } from "../Styles/style-widgets";
 
 
 function Users(props){

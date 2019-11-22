@@ -1,8 +1,6 @@
 import React,{ useState } from "react"
 import api from "../../utils/api"
-// import Header from "./Header"
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { Button, Container, Info, HeaderLogin } from "../../Styles/style-widgets";
 
 
 function SignUp(props){
@@ -34,15 +32,17 @@ const handleSubmit=(e)=>{
 };
 
     return(
-        <div>
+        <Container>
             {/*<Header/>*/}
             <form onSubmit={handleSubmit}>
-                <br/><br/><h3> Sign Up</h3>
-                <TextField label="User Name" type="text" name="username" placeholder="User Name" value={User.username} onChange={handleChange}/><br/><br/>
-                <TextField label="Password" type="password" name="password" placeholder="password" value={User.password} onChange={handleChange}/><br/><br/>
+                <br/><br/><HeaderLogin> Sign Up</HeaderLogin>
+                <Info
+                 label="User Name" type="text" name="username" placeholder="User Name" value={User.username} onChange={handleChange}/><br/><br/>
+                <Info
+                 label="Password" type="password" name="password" placeholder="password" value={User.password} onChange={handleChange}/><br/><br/>
                 <Button type="submit">Signup</Button>
             </form>
-        </div>
+        </Container>
          
     )
 }
