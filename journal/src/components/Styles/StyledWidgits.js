@@ -21,4 +21,30 @@ export const Contain=styled.div`
 `
 
 
+export const ActInfo = styled.h2`
+  font-family: "typewriter";
+  color: black;
+`;
+
+export const ActInfo2 = styled.p`
+  font-family: "typewriter";
+  color: #fff4a6;
+`;
+export const ActInfo3 = styled.h4`
+  font-family: "typewriter";
+  color: #fff4a6;
+`;
+
+export const Button = styled.button`
+  display: flex;
+  border-radius: 7px;
+  background-color: #0b607b
+  color: #FF3238
+  border: 1px solid #FFF4A6;
+  margin: 2rem auto;
+  &:hover {
+    background-color: #28A40E;
+    transform: 1rem;
+  }
+`
 

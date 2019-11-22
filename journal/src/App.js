@@ -10,6 +10,7 @@ import User from "./components/Dashboard/user"
 import UserLogin from "./components/Login/UsersLogin"
 import UserDashboard from"./components/Dashboard/UserDashboard"
 import Addactivity from "./components/Activites/Addactivity"
+import ReflectionForm from "./components/Reflections/Reflections"
 
 
 
@@ -24,6 +25,7 @@ function App() {
       <ProtectedRoute exact path="/userdashboard/:id" component={UserDashboard}/>
       <ProtectedRoute exact path="/users/:id" component={User}/>
       <ProtectedRoute exact path="/userdashboard/:id/addactivity" component={Addactivity}/>
+      <ProtectedRoute exact path="/userdashboard/:id/addReflection" component={ReflectionForm}/>
     </div>
   );
 }

@@ -28,7 +28,7 @@ function Addactivity(props){
         .post(`/api/activities/${user_name}`, activity)
         .then(res=>{
             console.log(res)
-            localStorage.setItem("add activity",JSON.stringify(res.config.data))
+            // localStorage.setItem("add activity",JSON.stringify(res.config.data))
             props.history.push(`/userdashboard/${id}`)
         })
      
