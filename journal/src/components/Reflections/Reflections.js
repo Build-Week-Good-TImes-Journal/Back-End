@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
 import { Link } from "react-router-dom";
-import { Container, ActInfo , Button} from "../../Styles/style-widgets";
+import { Container, ActInfo, ActInfo2, Button } from "../../Styles/style-widgets";
 
 function ReflectionForm() {
   const user_id = JSON.parse(window.localStorage.getItem("user id"));
@@ -9,7 +9,7 @@ function ReflectionForm() {
   console.log(user_id);
   const user_name = JSON.parse(window.localStorage.getItem("username"));
   const [newReflection, setNewReflection] = useState({
-      reflection: ''
+    reflection: ""
   });
   const [reflection, setReflection] = useState([]);
   useEffect(() => {
@@ -17,12 +17,12 @@ function ReflectionForm() {
       .get(`/api/reflection-logs/${user_name}`)
       .then(res => {
         console.log(res);
-        setReflection(res.data.reflectionLogs)
+        setReflection(res.data.reflectionLogs);
       })
-        .catch(err => {
-          console.log(err);
+      .catch(err => {
+        console.log(err);
       });
-  },[]);
+  }, []);
 
   console.log(user_name);
 
@@ -40,35 +40,35 @@ function ReflectionForm() {
       .then(res => {
         console.log(res);
         localStorage.setItem("add reflection", JSON.stringify(res.data));
-        window.location.reload()
+        window.location.reload();
       })
       .catch(err => {
         console.log(err);
       });
   };
-console.log(reflection)
+  console.log(reflection);
   return (
     <Container>
-      <h1>Add your relflections here!</h1>
-      <form onSubmit={handleSubmit} >
-      <textarea type='text' 
-      name='reflection' 
-      value={newReflection.reflection} 
-      placeholder="How was your week" 
-      onChange={handleChange}
-      />
-      <Button type='submit'>Add Reflection</Button>
+      <ActInfo>Add your relflections here!</ActInfo>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          className="textArea"
+          type="text"
+          name="reflection"
+          value={newReflection.reflection}
+          placeholder="How was your week"
+          onChange={handleChange}
+        />
+        <button className="refButton" type="submit">Add Reflection</button>
       </form>
 
       {reflection.map(reflection => (
         <div key={reflection.id}>
-          <ActInfo>{reflection.reflection}</ActInfo>
-         
-          <ActInfo>{reflection.description}</ActInfo>
+          <ActInfo2>{reflection.reflection}</ActInfo2>
+          <ActInfo2>{reflection.description}</ActInfo2>
         </div>
       ))}
-      
-      </Container>
+    </Container>
   );
 }
 export default ReflectionForm;

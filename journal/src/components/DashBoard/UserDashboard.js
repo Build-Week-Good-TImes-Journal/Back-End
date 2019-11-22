@@ -2,9 +2,14 @@ import React,{useState,useEffect} from "react";
 import api from "../../utils/api";
 import { Link, withRouter} from "react-router-dom"
 import ProtectedRoute from "../Routes/ProtectedRoute";
+<<<<<<< HEAD
 // import Header from "./Header"
 // import UserDb from "./UserDb"
 
+=======
+import { Container, HeaderLogin, ActInfo, ActInfo2, ActInfo3 } from "../../Styles/style-widgets";
+import logo from "../../Images/Zone.png"
+>>>>>>> bb3fe763380d1ee8a76a2d4cb53494d54831772b
 
 function UserDashboard(props){
     const name = localStorage.getItem("username");
@@ -46,16 +51,16 @@ function UserDashboard(props){
             {user.activites.map(activity=>(
                 <div key={activity.id}>
                  <Link to={`/activity/${activity.name}`}>
-                 <h2>{activity.name}</h2>
+                 <ActInfo>{activity.name}</ActInfo>
                  </Link>
-                 <h2>{activity.description}</h2>
-                 <h3>{activity.created_at}</h3>
-                 <h3>{activity.updated_at}</h3>
+                 <ActInfo2>{activity.description}</ActInfo2>
+                 <ActInfo3>{activity.created_at}</ActInfo3>
+                 <ActInfo3>{activity.updated_at}</ActInfo3>
                 </div>
 
             ))}
             <Link to={`/userdashboard/${id}/addactivity`}>Add Activity</Link>
-        </div>
+        </Container>
     )
 }
 

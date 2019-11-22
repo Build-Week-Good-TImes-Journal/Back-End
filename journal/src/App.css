@@ -55,4 +55,18 @@
   padding: 3px;
  
 }
+.textArea {
+  border-radius: 4px;
+  width: 16.5rem;
+  height: 7rem;
+}
 
+.refButton{
+  display: flex;
+  border-radius: 7px;
+  background-color: #0b607b;
+  color: #FF3238;
+  border: 1px solid #FFF4A6;
+  justify-content: left;
+  margin-left: 5.5rem;
+}
