@@ -55,7 +55,7 @@ function Users(props) {
               
                 <Container className = "userContainer">
                 
-                  <TableRow className="table">
+                  <TableRow className="tabl67p">
                     {/* <p>User Name:</p> */}
                     <TableCell>User Name: {user.username}</TableCell>
                     {/* <p>Role:</p> */}

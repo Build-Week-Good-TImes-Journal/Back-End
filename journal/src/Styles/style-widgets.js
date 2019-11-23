@@ -33,7 +33,7 @@ export const HeaderLogin = styled.h1`
   color: #FFF4A6
   border: 1px solid #FFF4A6;
   width: 7rem;
-  margin: 2rem auto;
+  margin: 1rem auto;
   border-radius: 7px;
   background-color: #0b607b;
   padding : 20px;
