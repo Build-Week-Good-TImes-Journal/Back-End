@@ -31,8 +31,19 @@ margin: 0 auto;
 text-align: center;
 background-color: #0B6073;
 border-radius: 7px;
-font-family: monospace, ubuntu;
-height: 500px;
+font-family: Helvetica;
+height: 100%;
+`
+export const Container2 = styled.body`
+display-flex: flex;
+justify-content: center;
+font-size: 2rem;
+margin: -5 auto;
+text-align: center;
+background-color: #0B6073;
+border-radius: 7px;
+font-family: Helvetica;
+height: 5rem;
 `
 
 

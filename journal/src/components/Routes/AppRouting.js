@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import ProtectedRoute from "./ProtectedRoute";
-import FormikLoginForm from '../Login/Login';
 import UsersLogin from "../Login/RamyLogin";
 import Home from "../Login/Home";
 import AdminLogin from "../Login/AdminLogin";
@@ -11,19 +10,13 @@ import UserDashboard from "../DashBoard/UserDashboard";
 import User from "../DashBoard/User";
 import Addactivity from "../Activites/Activity";
 import Editform from "../Activites/Editactivity";
-
-import UserDb from "../DashBoard/UserDb"
-
 import ReflectionForm from "../Reflections/Reflections"
-
 
 const AppRouting = (props) => {
 
 console.log(props);
     return (
         <div>
-
-            {/*<Route exact path="/" component={FormikLoginForm} />*/}
             <Route exact path="/admin-login" component={AdminLogin}/>
             <Route exact path="/User-login" component={UsersLogin}/>
             <Route exact path="/signup" component={SignUp}/>
@@ -33,10 +26,6 @@ console.log(props);
             <ProtectedRoute exact path="/users/:id" component={User}/>
             <ProtectedRoute exact path="/activity/:id" component={Editform}/>
             <ProtectedRoute exact path="/userdashboard/:id/addactivity" component={Addactivity}/>
-
-            {/* <Route exact path="/AddReflection" component={ReflectionForm}/> */}
-            <Route exact path="/userdb/:id" component={UserDb}/>
-
             <Route exact path="/AddReflection" component={ReflectionForm}/>
         </div>
     )
