@@ -1,7 +1,7 @@
 import React from "react"
 // import Header from "./Header"
 import {Link} from "react-router-dom"
-import {Button, Container, Info, } from "../../Styles/style-widgets"
+import {Button, Container, } from "../../Styles/style-widgets"
 import logo from "../../Styles/logo.png";
 
 function Home(){

@@ -53,7 +53,7 @@ border: 1px solid #FFF4A6;
 width: 7rem;
 border-radius: 7px;
 background-color: #0b607b;
-// padding : 4px;
+padding : 4px;
 text-align: center;  
 &:hover {
   background-color: #FF3238;
@@ -74,7 +74,9 @@ export const Container = styled.body`
   padding: 2rem;
   align-content: center;
   border-radius: 7px;
-`;
+  
+  `;
+
 
 export const ActInfo = styled.h2`
   font-family: "Helvetica";

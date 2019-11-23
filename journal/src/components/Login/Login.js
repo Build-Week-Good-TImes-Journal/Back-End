@@ -2,7 +2,7 @@ import React from "react";
 import api from "../../utils/api";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { } from "reactstrap";
+// import { } from "reactstrap";
 import styled from "styled-components";
 
 const Header = styled.h1`
@@ -31,8 +31,19 @@ margin: 0 auto;
 text-align: center;
 background-color: #0B6073;
 border-radius: 7px;
-font-family: monospace, ubuntu;
-height: 500px;
+font-family: Helvetica;
+height: 100%;
+`
+export const Container2 = styled.body`
+display-flex: flex;
+justify-content: center;
+font-size: 2rem;
+margin: -5 auto;
+text-align: center;
+background-color: #0B6073;
+border-radius: 7px;
+font-family: Helvetica;
+height: 5rem;
 `
 
 

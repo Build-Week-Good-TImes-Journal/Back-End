@@ -45,15 +45,14 @@
   display: flex;
 }
 
-.addActivity{
+.addActivity {
   text-decoration: none;
   border-radius: 7px;
   background-color: #0b607b;
-  color: #FF3238;
-  border: 1px solid #FFF4A6;
+  color: #ff3238;
+  border: 1px solid #fff4a6;
   margin: 2rem auto;
   padding: 3px;
- 
 }
 .textArea {
   border-radius: 4px;
@@ -67,12 +66,28 @@
   display: flex;
   border-radius: 7px;
   background-color: #0b607b;
-  color: #FF3238;
-  border: 1px solid #FFF4A6;
+  color: #ff3238;
+  border: 1px solid #fff4a6;
   justify-content: left;
   margin: 2% auto;
 }
 
-.HomeLink {
+.userContainer {
+  margin-bottom: -7%;
+  box-shadow: 0px 0px 12px 1px;
+  transition: 0.5s;
+  text-emphasis-color: blue;
+}
+.userContainer:not(:first-child) {
+  margin-left: -4rem;
+}
+.userContainer.hover {
+  transform: translateY(-1rem);
+}
+.userContainer.hover ~ .userContainer {
+  transform: translateX(-1rem);
+}
 
+.table{
+  color: #FFF4A6;
 }

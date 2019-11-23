@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import ProtectedRoute from "./ProtectedRoute";
-import FormikLoginForm from '../Login/Login';
 import UsersLogin from "../Login/RamyLogin";
 import Home from "../Login/Home";
 import AdminLogin from "../Login/AdminLogin";
@@ -18,8 +17,6 @@ const AppRouting = (props) => {
 console.log(props);
     return (
         <div>
-
-            {/*<Route exact path="/" component={FormikLoginForm} />*/}
             <Route exact path="/admin-login" component={AdminLogin}/>
             <Route exact path="/User-login" component={UsersLogin}/>
             <Route exact path="/signup" component={SignUp}/>

@@ -38,8 +38,8 @@ function UserDashboard(props){
     return (
         <Container>
             <img className="Clogo" src={logo} alt="company logo" />
-            <HeaderLogin>Your Activities</HeaderLogin>
-            
+            {/*<Header/>*/}
+            <HeaderLogin>{message}</HeaderLogin>
             {user.activites.map(activity=>(
                 <div key={activity.id}>
                  <Link to={`/activity/${activity.name}`}>

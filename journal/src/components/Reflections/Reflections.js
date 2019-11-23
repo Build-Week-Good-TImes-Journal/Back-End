@@ -56,7 +56,7 @@ function ReflectionForm() {
   return (
     <Container>
       <img className="Clogo" src={logo} />
-      <ActInfo>Add your relflections here!</ActInfo>
+      <ActInfo>Add your reflections here!</ActInfo>
       <form onSubmit={handleSubmit}>
         <textarea
           className="textArea"
