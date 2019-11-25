@@ -9,8 +9,11 @@ import UsersLogin from "../Components/Login/Login";
 // import SignUp from "../Register/Register";
 // import Users from "../DashBoard/AdminDashboard";
 import UserDashboard from "../Components/DashBoard/UserDashBoard";
+import ProtectedRoute from "./ProtectedRoute";
 // import User from "../DashBoard/User";
-// import Addactivity from "../Activites/Activity";
+import Addactivity from "../Components/Activities/AddActivity";
+import {getUserActivities} from "../Actions/UserAction";
+import {connect} from "react-redux";
 // import Editform from "../Activites/Editactivity";
 
 // import UserDb from "../DashBoard/UserDb"
@@ -18,7 +21,7 @@ import UserDashboard from "../Components/DashBoard/UserDashBoard";
 // import ReflectionForm from "../Reflections/Reflections"
 
 
-const AppRouting = () => {
+const AppRouting = ({ name }) => {
 
     return (
         <div>
@@ -29,10 +32,10 @@ const AppRouting = () => {
             {/*<Route exact path="/signup" component={SignUp}/>*/}
             {/*<Route exact path="/" component={Home}/>*/}
             {/*<ProtectedRoute exact path="/users" component={Users}/>*/}
-            <Route exact path="/userdashboard" component={UserDashboard}/>
+            <ProtectedRoute exact path={`/dashboard`} component={UserDashboard}/>
             {/*<ProtectedRoute exact path="/users/:id" component={User}/>*/}
             {/*<ProtectedRoute exact path="/activity/:id" component={Editform}/>*/}
-            {/*<ProtectedRoute exact path="/userdashboard/:id/addactivity" component={Addactivity}/>*/}
+            <ProtectedRoute exact path={`/addactivity`} component={Addactivity}/>
 
             {/* <Route exact path="/AddReflection" component={ReflectionForm}/> */}
             {/*<Route exact path="/userdb/:id" component={UserDb}/>*/}
@@ -43,4 +46,15 @@ const AppRouting = () => {
 
 };
 
-export default AppRouting;
+function mapStateToProps(state) {
+    return {
+        name: state.username,
+        id: state.user_id,
+        activity: state.activities
+    }
+}
+
+
+
+export default connect (
+    mapStateToProps)(AppRouting);

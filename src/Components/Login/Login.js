@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 
-function UsersLogin({ getUserLogin, history }){
+function UsersLogin({ getUserLogin, history, name }){
 
     const [login,setLogin]=useState({
         username:"",
@@ -24,7 +24,7 @@ function UsersLogin({ getUserLogin, history }){
     const handleSubmit=(e)=>{
         e.preventDefault();
        getUserLogin(login);
-        history.push(`/userdashboard`)
+        history.push(`/dashboard`)
     };
 
     return(
@@ -41,10 +41,16 @@ function UsersLogin({ getUserLogin, history }){
     )
 }
 
-
+function mapStateToProps(state) {
+    return {
+        name: state.username,
+        id: state.user_id,
+        activity: state.activities
+    }
+}
 
 const mapDispatchToProps = {
     getUserLogin
 };
 
-export default connect(null, mapDispatchToProps)(UsersLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(UsersLogin);

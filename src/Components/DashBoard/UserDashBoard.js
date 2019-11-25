@@ -5,12 +5,13 @@ import { getUserActivities } from "../../Actions/UserAction";
 import { Container, HeaderLogin, ActInfo, ActInfo2, ActInfo3 } from "../../Styles/StyledWidgets";
 
 
-function UserDashboard(props){
-console.log(props.info);
-    useEffect(()=>{
+function UserDashboard({  name, id,  activity, getUserActivities }){
 
+    useEffect((name)=>{
+        getUserActivities(name)
     },[]);
 
+    console.log(activity);
     return (
 
         <Container>
@@ -32,19 +33,21 @@ console.log(props.info);
                 {/*    </div>*/}
 
                 {/*))}*/}
-                {/*<Link to={`/userdashboard/${id}/addactivity`}>Add Activity</Link>*/}
+                <Link to={`/addactivity`}>Add Activity</Link>
             </div>
         </Container>
     )
 }
 
  const mapDispatchToProps = {
-    getUserActivities
+     getUserActivities
 };
 
 function mapStateToProps(state) {
     return {
-        info: state
+        name: state.username,
+        id: state.user_id,
+        activity: state.activities
     }
 }
 
