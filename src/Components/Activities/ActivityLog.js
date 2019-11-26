@@ -6,14 +6,11 @@ import { Container, HeaderLogin, ActInfo, ActInfo2, ActInfo3 } from "../../Style
 
 
 function ActivityLog({  name,  id,  activity, getUserActivities }) {
-    console.log(name)
+
     useEffect((name) => {
         getUserActivities(name)
     }, [getUserActivities]);
 
-    if (activity === undefined) {
-        return <div>Loading....</div>
-    } else {
         return (
 
             <Container>
@@ -38,7 +35,7 @@ function ActivityLog({  name,  id,  activity, getUserActivities }) {
             </Container>
         )
     }
-}
+
 const mapDispatchToProps = {
     getUserActivities
 };

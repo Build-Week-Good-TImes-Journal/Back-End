@@ -5,7 +5,8 @@ import { getUserActivities } from "../../Actions/UserAction";
 import { Container, HeaderLogin, ActInfo, ActInfo2, ActInfo3 } from "../../Styles/StyledWidgets";
 
 
-function UserDashboard() {
+function UserDashboard({info}) {
+    console.log(info);
     return (
         <div>Hey you guys</div>
     )
@@ -19,7 +20,8 @@ function mapStateToProps(state) {
     return {
         name: state.username,
         id: state.user_id,
-        activity: state.activities
+        activity: state.activities,
+        info: state
     }
 }
 

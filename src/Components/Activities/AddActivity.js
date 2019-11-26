@@ -8,7 +8,7 @@ import { addUserActivity } from "../../Actions/UserAction";
 
 function Addactivity({ addUserActivity, name, id, history }){
 
-    console.log(name)
+    console.log(id)
     const[activity,setActivity]=useState({
         name:"",
         description:"",

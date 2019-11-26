@@ -1,4 +1,5 @@
 import api from "../Utilites/api";
+import { login } from "../Utilites/api";
 
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
 export const SET_USER_REGISTER = "SET_USER_REGISTER";
