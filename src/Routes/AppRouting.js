@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import UsersLogin from "../Components/Login/Login";
 import Logout from "../Components/Login/Logout";
 import ActivityLog from "../Components/Activities/ActivityLog";
+import ReflectionForm from "../Components/Reflections/Reflections";
 // import ProtectedRoute from "./ProtectedRoute";
 // import FormikLoginForm from '../Login/Login';
 // import UsersLogin from "../Login/RamyLogin";
@@ -41,7 +42,7 @@ const AppRouting = ({ name }) => {
             <ProtectedRoute exact path={`/addactivity`} component={Addactivity}/>
             <ProtectedRoute exact path={`/logout`} component={Logout}/>
 
-            {/* <Route exact path="/AddReflection" component={ReflectionForm}/> */}
+             <Route exact path="/AddReflection" component={ReflectionForm}/>
             {/*<Route exact path="/userdb/:id" component={UserDb}/>*/}
 
             {/*<Route exact path="/AddReflection" component={ReflectionForm}/>*/}
