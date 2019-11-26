@@ -50,13 +50,15 @@ export function addUserActivity(name, activity) {
         api()
             .post(`/api/activities/${name}`, activity)
             .then(res => {
-                console.log(res);
+                console.log(res.data);
                 dispatch({ type: ADD_USER_ACTIVITIES, payload: {
                     activities: res.data
                     } })
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
+                console.log(name);
+                console.log(activity);
             });
     };
 }

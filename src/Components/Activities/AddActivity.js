@@ -8,6 +8,7 @@ import { addUserActivity } from "../../Actions/UserAction";
 
 function Addactivity({ addUserActivity, name, id, history }){
 
+    console.log(name)
     const[activity,setActivity]=useState({
         name:"",
         description:"",
@@ -20,10 +21,11 @@ function Addactivity({ addUserActivity, name, id, history }){
             [e.target.name]:e.target.value
         })
     };
-
-    const handleSubmit = (e, name, activity) => {
+console.log(name);
+console.log(activity);
+    const handleSubmit = (e) => {
         e.preventDefault();
-        addUserActivity(name);
+        addUserActivity(name, activity);
         history.push("/dashboard")
     };
     return(

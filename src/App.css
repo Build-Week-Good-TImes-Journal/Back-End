@@ -1,5 +1,22 @@
 .App {
-
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 2rem;
 }
 
+.nav {
+    background-color: #FFF4A6;
+    display:flex;
+    justify-content: flex-end;
+    float: right;
+    border-radius: .2rem;
+    padding: .2rem 1rem;
+    width: 44%;
+}
+
+a {
+    text-decoration: none;
+    margin: .5rem 1rem;
+    color: #ff3238;
+}
 
