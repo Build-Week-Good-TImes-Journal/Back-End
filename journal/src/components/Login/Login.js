@@ -38,12 +38,14 @@ export const Container2 = styled.body`
 display-flex: flex;
 justify-content: center;
 font-size: 2rem;
-margin: -5 auto;
+margin: 0 auto;
 text-align: center;
 background-color: #0B6073;
 border-radius: 7px;
 font-family: Helvetica;
 height: 5rem;
+padding: 1rem;
+align-items: center;
 `
 
 

@@ -1,7 +1,9 @@
 import React,{useState, useEffect} from "react"
 import api from "../../utils/api";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import {Link} from "react-router-dom"
+import {Button, HeaderLogin, Info, Container, ActInfo3, ActInfo2, ActLink} from "../../Styles/style-widgets"
+import logo from "../../Styles/logo.png"
+
 
 function User(props){
     const{id}=props.match.params
@@ -45,16 +47,18 @@ function User(props){
 
 
     return(
-        <div>
-            <br/><br/><h4>User name: {user.username}</h4>
-            <h4>updated_at: {user.updated_at}</h4>
+        <Container>
+              <Link className="Homelink"to="/">Home</Link>
+              <img className="Clogo" src={logo}/>
+            <br/><br/><HeaderLogin>User name: {user.username}</HeaderLogin>
+            <ActInfo3>updated_at: {user.updated_at}</ActInfo3>
             <br/><form onSubmit={handleSubmit}>
-                 <h3>Edit User</h3>
-                 <TextField label="User Name" type="text" name="username" placeholder="User Name" value={user.username} onChange={handleChange}/><br/><br/>
-                 <TextField label="Role" type="number" name="role" value={user.role} placeholder="Role"  onChange={handleChange}/><br/><br/>
+                 <ActInfo2>Edit User</ActInfo2>
+                 <Info label="User Name" type="text" name="username" placeholder="User Name" value={user.username} onChange={handleChange}/><br/><br/>
+                 <Info label="Role" type="number" name="role" value={user.role} placeholder="Role"  onChange={handleChange}/><br/><br/>
                  <Button type="submit">save</Button>
              </form>
-        </div>
+        </Container>
     )
 }
 
