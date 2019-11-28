@@ -8,7 +8,6 @@ import { addUserActivity } from "../../Actions/UserAction";
 
 function Addactivity({ addUserActivity, name, id, history }){
 
-    console.log(id)
     const[activity,setActivity]=useState({
         name:"",
         description:"",
@@ -21,8 +20,7 @@ function Addactivity({ addUserActivity, name, id, history }){
             [e.target.name]:e.target.value
         })
     };
-console.log(name);
-console.log(activity);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         addUserActivity(name, activity);

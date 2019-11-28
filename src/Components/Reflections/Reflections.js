@@ -8,25 +8,17 @@ import {
     Select
 } from "../../Styles/StyledWidgets";
 // import logo from "../../Styles/logo.png";
-import {getUserActivities} from "../../Actions/UserAction";
+import {getReflections, addReflections } from "../../Actions/UserAction";
 import {connect} from "react-redux";
 
-function ReflectionForm({ name, id }) {
+function ReflectionForm({ name, id, getReflections, addReflections, reflection }) {
 
     const [newReflection, setNewReflection] = useState({
         reflection: ""
     });
-    const [reflection, setReflection] = useState([]);
+
     useEffect(() => {
-        api()
-            .get(`/api/reflection-logs/${name}`)
-            .then(res => {
-                console.log(res);
-                setReflection(res.data.reflectionLogs);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+       getReflections(name)
     }, []);
 
 
@@ -37,27 +29,11 @@ function ReflectionForm({ name, id }) {
         });
     };
 
-    const handleSubmit = e => {
+    function handleSubmit(e) {
         e.preventDefault();
-        api()
-            .post(`/api/reflection-logs/${name}`, newReflection)
-            .then(res => {
-                console.log(res);
-                api()
-                    .get(`/api/reflection-logs/${name}`)
-                    .then(res => {
-                        setReflection(res.data.reflectionLogs);
-                        setNewReflection('')
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
-    console.log(reflection);
+        addReflections(name, newReflection)
+    }
+
     return (
         <Container>
             {/*<img className="Clogo" src={logo} />*/}
@@ -89,6 +65,7 @@ function ReflectionForm({ name, id }) {
                 <div key={reflection.id}>
                     <ActInfo2>{reflection.reflection}</ActInfo2>
                     <ActInfo2>{reflection.description}</ActInfo2>
+                    {/*<button onClick={}>Delete</button>*/}
                 </div>
             ))}
         </Container>
@@ -96,14 +73,16 @@ function ReflectionForm({ name, id }) {
 }
 
 const mapDispatchToProps = {
-    getUserActivities
+    getReflections,
+    addReflections
 };
 
 function mapStateToProps(state) {
     return {
         name: state.username,
         id: state.user_id,
-        activity: state.activities
+        activity: state.activities,
+        reflection: state.reflections
     }
 }
 

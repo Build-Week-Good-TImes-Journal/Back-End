@@ -1,10 +1,18 @@
-import { GET_USER_LOGIN, GET_USER_ACTIVITY, GET_USER_ACTIVITIES, SET_USER_REGISTER, ADD_USER_ACTIVITIES } from "../Actions/UserAction";
+import {
+    GET_USER_LOGIN,
+    GET_USER_ACTIVITY,
+    GET_USER_ACTIVITIES,
+    SET_USER_REGISTER,
+    ADD_USER_ACTIVITIES,
+    DELETE_USER_ACTIVITY, GET_USER_REFLECTIONS
+} from "../Actions/UserAction";
 
 const initialState = {
     username: "",
     password: "",
     user_id: "",
-    activities: []
+    activities: [],
+    reflections: []
 };
 
 export function UserReducer(state = initialState, action) {
@@ -25,10 +33,20 @@ export function UserReducer(state = initialState, action) {
             };
         case ADD_USER_ACTIVITIES:
             return {
-                ...state,
-                activities: action.payload
+                ...state
             };
-
+        case DELETE_USER_ACTIVITY:
+            return {
+                ...state,
+                // activities: action.payload.activities.filter(act => {
+                //     return act.id !===
+                // })
+            };
+        case GET_USER_REFLECTIONS:
+            return {
+                ...state,
+                reflections: action.payload.reflections
+            };
         default:
             return state;
     }

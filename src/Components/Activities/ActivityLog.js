@@ -1,18 +1,18 @@
 import React,{ useState,useEffect } from "react";
 import { Link} from "react-router-dom";
 import { connect } from 'react-redux';
-import { getUserActivities } from "../../Actions/UserAction";
+import {deleteActivity, getUserActivities} from "../../Actions/UserAction";
 import { Container, HeaderLogin, ActInfo, ActInfo2, ActInfo3 } from "../../Styles/StyledWidgets";
 
 
-function ActivityLog({  name,  id,  activity, getUserActivities }) {
+function ActivityLog({  name,  id,  activity, getUserActivities, deleteActivity, info }) {
+
 
     useEffect((name) => {
-        getUserActivities(name)
+        getUserActivities(name);
     }, [getUserActivities]);
 
         return (
-
             <Container>
                 {/*<img className="Clogo" src={logo} alt="company logo" />*/}
                 <HeaderLogin>Your Activities</HeaderLogin>
@@ -25,10 +25,13 @@ function ActivityLog({  name,  id,  activity, getUserActivities }) {
                             <Link to={`/activity/${activity.name}`}>
                                 <ActInfo>{activity.name}</ActInfo>
                             </Link>
-                            {/*<ActInfo2>{activity.description}</ActInfo2>*/}
+                            <ActInfo2>{activity.description}</ActInfo2>
                             {/*<ActInfo3>{activity.created_at}</ActInfo3>*/}
                             {/*<ActInfo3>{activity.updated_at}</ActInfo3>*/}
-                        </div>
+                            <Link to={`/activity/${activity.id}`}>
+                            <button>Upgrade Activity</button>
+                            </Link>
+                            </div>
 
                     ))}
                 </div>
@@ -37,14 +40,16 @@ function ActivityLog({  name,  id,  activity, getUserActivities }) {
     }
 
 const mapDispatchToProps = {
-    getUserActivities
+    getUserActivities,
+    deleteActivity
 };
 
 function mapStateToProps(state) {
     return {
         name: state.username,
         id: state.user_id,
-        activity: state.activities
+        activity: state.activities,
+        info: state
     }
 }
 

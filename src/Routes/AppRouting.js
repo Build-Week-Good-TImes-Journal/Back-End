@@ -4,12 +4,13 @@ import UsersLogin from "../Components/Login/Login";
 import Logout from "../Components/Login/Logout";
 import ActivityLog from "../Components/Activities/ActivityLog";
 import ReflectionForm from "../Components/Reflections/Reflections";
+import EditActivity from "../Components/Activities/EditActivity";
 // import ProtectedRoute from "./ProtectedRoute";
 // import FormikLoginForm from '../Login/Login';
 // import UsersLogin from "../Login/RamyLogin";
 // import Home from "../Login/Home";
 // import AdminLogin from "../Login/AdminLogin";
-// import SignUp from "../Register/Register";
+import SignUp from "../Components/Registration/Registration";
 // import Users from "../DashBoard/AdminDashboard";
 import UserDashboard from "../Components/DashBoard/UserDashBoard";
 import ProtectedRoute from "./ProtectedRoute";
@@ -32,13 +33,13 @@ const AppRouting = ({ name }) => {
             {/*<Route exact path="/" component={FormikLoginForm} />*/}
             {/*<Route exact path="/admin-login" component={AdminLogin}/>*/}
             <Route exact path="/" component={UsersLogin}/>
-            {/*<Route exact path="/signup" component={SignUp}/>*/}
+            <Route exact path="/signup" component={SignUp}/>
             {/*<Route exact path="/" component={Home}/>*/}
             {/*<ProtectedRoute exact path="/users" component={Users}/>*/}
             <ProtectedRoute exact path={`/dashboard`} component={UserDashboard}/>
             <ProtectedRoute exact path={`/myactivities`} component={ActivityLog}/>
             {/*<ProtectedRoute exact path="/users/:id" component={User}/>*/}
-            {/*<ProtectedRoute exact path="/activity/:id" component={Editform}/>*/}
+            <ProtectedRoute exact path="/activity/:id" component={EditActivity}/>
             <ProtectedRoute exact path={`/addactivity`} component={Addactivity}/>
             <ProtectedRoute exact path={`/logout`} component={Logout}/>
 
