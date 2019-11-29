@@ -135,9 +135,8 @@ export function addReflections(user, reflection) {
             api()
                 .get(`/api/activities/${name}/${id}`)
                 .then(res => {
-                    console.log(res.data)
                    dispatch({ type: EDIT_USER_ACTIVITY, payload:{
-                       data: res.data
+                       data: res.data[0]
                        } })
                 })
                 .catch(err => {

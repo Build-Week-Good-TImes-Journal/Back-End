@@ -19,7 +19,7 @@ const initialState = {
     user_id: "",
     activities: [],
     reflections: [],
-    editActivity:[],
+    editActivity:{},
     editReflection:{}
 };
 

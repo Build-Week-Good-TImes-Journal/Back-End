@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {DELETE_USER_ACTIVITY, deleteActivity, editActivity, updateUserActivity} from "../../Actions/UserAction";
 import api from "../../Utilites/api";
 
-function EditActivity ({ name, actId,  match, editInfo, editActivity, user_id, updateUserActivity, history, deleteActivity }) {
+function EditActivity ({ name, actId, editId,  match, editInfo, editActivity, user_id, updateUserActivity, history, deleteActivity }) {
 
   const id = match.params.id;
   const [editData, setEditData] = useState(false);
@@ -32,12 +32,12 @@ function EditActivity ({ name, actId,  match, editInfo, editActivity, user_id, u
         setNewData(act);
     };
 
-
+console.log(editInfo)
     function clickHandler(e) {
         e.preventDefault();
         api()
             .delete(`/api/activities/${name}`, {data: {
-                id: actId
+                id: editId
                 }})
             .then(res => {
                 console.log(res)
@@ -50,14 +50,10 @@ function EditActivity ({ name, actId,  match, editInfo, editActivity, user_id, u
 
     return (
         <div>
-            {editInfo.map(arr => {
-                return (
-                    <div key={arr.id}>
-                        <h1 onClick={() => edit(newData)} >{arr.name}</h1>
+                    <div>
+                        <h1 onClick={() => edit(newData)} >hey you guys</h1>
                         <button onClick={clickHandler}>Delete Activity</button>
                     </div>
-                )
-            })}
     {editData && (
         <form onSubmit={saveEdit}>
             <legend>Update Activity</legend>
@@ -104,7 +100,8 @@ function mapStateToProps(state) {
         activity: state.activities,
         info: state,
         actId: state.activities.id,
-        editInfo: state.editActivity
+        editInfo: state.editActivity,
+        editId: state.editActivity.id
     }
 }
 
