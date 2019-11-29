@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {DELETE_USER_ACTIVITY, deleteActivity, editActivity, updateUserActivity} from "../../Actions/UserAction";
 import api from "../../Utilites/api";
 
-function EditActivity ({ name, match, editInfo, editActivity, user_id, updateUserActivity, history, deleteActivity }) {
+function EditActivity ({ name, actId,  match, editInfo, editActivity, user_id, updateUserActivity, history, deleteActivity }) {
 
   const id = match.params.id;
   const [editData, setEditData] = useState(false);
@@ -36,7 +36,9 @@ function EditActivity ({ name, match, editInfo, editActivity, user_id, updateUse
     function clickHandler(e) {
         e.preventDefault();
         api()
-            .delete(`/api/activity-logs/${name}`, id)
+            .delete(`/api/activities/${name}`, {data: {
+                id: actId
+                }})
             .then(res => {
                 console.log(res)
             })

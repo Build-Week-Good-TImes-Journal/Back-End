@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import {connect} from "react-redux";
 import {editReflection, updateUserReflection} from "../../Actions/UserAction";
 import api from "../../Utilites/api";
+import axios from 'axios';
 
-function EditReflection ({ name, user_id, match, editInfo, editReflection, updateUserReflection, history }) {
+function EditReflection ({ name, user_id, match, editInfo, editID,  editReflection, updateUserReflection, history }) {
 
     const id = match.params.id;
     const [editData, setEditData] = useState(false);
-    const [actID] = useState({
-        id: Number(id)
+    const [deleteID] = useState({
+        id: editID
     });
     const [newData, setNewData] = useState({
         reflection: "",
@@ -32,18 +33,20 @@ function EditReflection ({ name, user_id, match, editInfo, editReflection, updat
         setNewData(refl);
     };
 
-
+console.log(editID)
     function clickHandler(e) {
         e.preventDefault();
-        // api()
-        //     .delete(`/api/activity-logs/${name}`, id)
-        //     .then(res => {
-        //         console.log(res)
-        //     })
-        //     .catch(err => {
-        //         console.log(err.message)
-        //     });
-        // history.push("/myactivities")
+        api()
+            .delete(`/api/reflection-logs/${name}`, {data: {
+                id:editID
+        }})
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err.message)
+            });
+        history.push("/dashboard")
     }
 console.log(newData.reflection);
     console.log(newData);
@@ -86,7 +89,8 @@ function mapStateToProps(state) {
         name: state.username,
         user_id: state.user_id,
         reflection: state.reflections,
-        editInfo: state.editReflection.reflection
+        editInfo: state.editReflection.reflection,
+        editID: state.editReflection.id
     }
 }
 
