@@ -18,6 +18,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Addactivity from "../Components/Activities/AddActivity";
 import {getUserActivities} from "../Actions/UserAction";
 import {connect} from "react-redux";
+import EditReflection from "../Components/Reflections/EditReflection";
 // import Editform from "../Activites/Editactivity";
 
 // import UserDb from "../DashBoard/UserDb"
@@ -40,6 +41,7 @@ const AppRouting = ({ name }) => {
             <ProtectedRoute exact path={`/myactivities`} component={ActivityLog}/>
             {/*<ProtectedRoute exact path="/users/:id" component={User}/>*/}
             <ProtectedRoute exact path="/activity/:id" component={EditActivity}/>
+            <ProtectedRoute exact path="/reflection/:id" component={EditReflection}/>
             <ProtectedRoute exact path={`/addactivity`} component={Addactivity}/>
             <ProtectedRoute exact path={`/logout`} component={Logout}/>
 

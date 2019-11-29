@@ -6,7 +6,12 @@ export const SET_USER_REGISTER = "SET_USER_REGISTER";
 export const GET_USER_REFLECTIONS = "GET_USER_REFLECTIONS";
 export const GET_USER_ACTIVITIES = "GET_USER_ACTIVITIES";
 export const ADD_USER_ACTIVITIES = "ADD_USER_ACTIVITIES";
+export const ADD_USER_REFLECTIONS = "ADD_USER_REFLECTIONS";
 export const GET_USER_ACTIVITY = "GET_USER_ACTIVITY";
+export const UPDATE_USER_ACTIVITY = "UPDATE_USER_ACTIVITY";
+export const UPDATE_USER_REFLECTION = "UPDATE_USER_REFLECTION";
+export const EDIT_USER_ACTIVITY = "EDIT_USER_ACTIVITY";
+export const EDIT_USER_REFLECTION = "EDIT_USER_REFLECTION";
 export const DELETE_USER_ACTIVITY = "DELETE_USER_ACTIVITY";
 
 export function getUserLogin(param) {
@@ -75,17 +80,19 @@ export function registerUser(user) {
             })
     }
 
-export function deleteActivity(user, act) {
+export function deleteActivity(user, id) {
 
     return dispatch => {
 
         api()
-            .delete(`api/activities/${user}`, act.id)
+            .delete(`/api/activity-logs/${user}`, id)
             .then(res => {
                 dispatch({ type: DELETE_USER_ACTIVITY })
             })
             .catch(err => {
-                console.log(err)
+                console.log(id);
+                console.log(user)
+                console.log(err.message)
             })
     }
 }
@@ -109,13 +116,87 @@ export function getReflections(user) {
 
 export function addReflections(user, reflection) {
 
-        api(`/api/reflection-logs/${user}`, reflection)
-            .post(res => {
+    return dispatch => {
+        api()
+        .post(`/api/reflection-logs/${user}`, reflection)
+            .then(res => {
                 console.log(res);
-                getReflections(user)
+                dispatch({ type: ADD_USER_REFLECTIONS })
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    }}
+
+    export function editActivity(name, id) {
+
+        return dispatch => {
+
+            api()
+                .get(`/api/activities/${name}/${id}`)
+                .then(res => {
+                    console.log(res.data)
+                   dispatch({ type: EDIT_USER_ACTIVITY, payload:{
+                       data: res.data
+                       } })
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }
+
+    export function updateUserActivity(name, id) {
+
+        return dispatch => {
+
+            api()
+                .put(`/api/activities/${name}`, id)
+                .then(res => {
+                    console.log(res);
+                    console.log(id);
+                    dispatch({ type: UPDATE_USER_ACTIVITY })
+                })
+                .catch(err => {
+                    console.log(id);
+                    console.log(err.message)
+                })
+        }
+    }
+
+export function editReflection(name, id) {
+
+    return dispatch => {
+
+        api()
+            .get(`/api/reflection-logs/${name}/${id}`)
+            .then(res => {
+                console.log(res.data.reflectionLog)
+                dispatch({ type: EDIT_USER_REFLECTION, payload:{
+                        data: res.data.reflectionLog
+                    } })
             })
             .catch(err => {
                 console.log(err)
             })
     }
+}
+
+export function updateUserReflection(name, id) {
+
+    return dispatch => {
+
+        api()
+            .put(`/api/reflection-logs/${name}`, id)
+            .then(res => {
+                console.log(res);
+                dispatch({ type: UPDATE_USER_REFLECTION })
+            })
+            .catch(err => {
+                console.log(id);
+                console.log(err.message)
+            })
+    }
+}
+
 

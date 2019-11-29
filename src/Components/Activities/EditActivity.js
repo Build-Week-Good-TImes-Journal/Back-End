@@ -1,37 +1,108 @@
-import React, { useState } from 'react';
-import {deleteActivity, getUserActivities} from "../../Actions/UserAction";
+import React, { useState, useEffect } from 'react';
 import {connect} from "react-redux";
+import {DELETE_USER_ACTIVITY, deleteActivity, editActivity, updateUserActivity} from "../../Actions/UserAction";
+import api from "../../Utilites/api";
 
-function EditActivity (props) {
+function EditActivity ({ name, match, editInfo, editActivity, user_id, updateUserActivity, history, deleteActivity }) {
 
-  const id = props.match.params.id;
-  const edit = props.activity.map(arr => {
-      return arr.id === id;
+  const id = match.params.id;
+  const [editData, setEditData] = useState(false);
+  const [actID] = useState({
+      id: Number(id)
+  });
+  const [newData, setNewData] = useState({
+      name: "",
+      description: "",
+      id: id,
+      user_id: user_id
   });
 
-  console.log(edit);
-console.log(props.activity[id]);
-    console.log(id);
+   useEffect(() => {
+        editActivity(name, id)
+   },[id]);
+
+   const saveEdit = (e) => {
+        e.preventDefault();
+       updateUserActivity(name, newData);
+       history.push("/myactivities")
+   };
+
+    const edit = act => {
+        setEditData(true);
+        setNewData(act);
+    };
+
+
+    function clickHandler(e) {
+        e.preventDefault();
+        api()
+            .delete(`/api/activity-logs/${name}`, id)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err.message)
+            });
+        history.push("/myactivities")
+    }
 
     return (
         <div>
-            hey you guys
-        </div>
-    )
-}
+            {editInfo.map(arr => {
+                return (
+                    <div key={arr.id}>
+                        <h1 onClick={() => edit(newData)} >{arr.name}</h1>
+                        <button onClick={clickHandler}>Delete Activity</button>
+                    </div>
+                )
+            })}
+    {editData && (
+        <form onSubmit={saveEdit}>
+            <legend>Update Activity</legend>
+            <label>
+                Name:
+                <input
+                    onChange={e =>
+                        setNewData({ ...newData, name: e.target.value })
+                    }
+                    value={newData.name}
+                />
+            </label>
+            <label>
+                Description:
+                <input
+                    onChange={e =>
+                        setNewData({
+                            ...newData,
+                            description:  e.target.value
+                        })
+                    }
+                    value={newData.description}
+                />
+            </label>
+            <div className="button-row">
+                <button type="submit">save</button>
+                <button onClick={() => setEditData(false)}>cancel</button>
+            </div>
+        </form>
+    )}
+    </div>
+    )}
 
 const mapDispatchToProps = {
-    getUserActivities,
+    editActivity,
+    updateUserActivity,
     deleteActivity
 };
 
 function mapStateToProps(state) {
     return {
         name: state.username,
-        id: state.user_id,
+        user_id: state.user_id,
         activity: state.activities,
         info: state,
-        actId: state.activities.id
+        actId: state.activities.id,
+        editInfo: state.editActivity
     }
 }
 

@@ -8,10 +8,10 @@ import { Container, HeaderLogin, ActInfo, ActInfo2, ActInfo3 } from "../../Style
 function ActivityLog({  name,  id,  activity, getUserActivities, deleteActivity, info }) {
 
 
-    useEffect((name) => {
+    useEffect(() => {
         getUserActivities(name);
     }, [getUserActivities]);
-
+console.log(activity);
         return (
             <Container>
                 {/*<img className="Clogo" src={logo} alt="company logo" />*/}
@@ -29,7 +29,7 @@ function ActivityLog({  name,  id,  activity, getUserActivities, deleteActivity,
                             {/*<ActInfo3>{activity.created_at}</ActInfo3>*/}
                             {/*<ActInfo3>{activity.updated_at}</ActInfo3>*/}
                             <Link to={`/activity/${activity.id}`}>
-                            <button>Upgrade Activity</button>
+                            <button>Update Activity</button>
                             </Link>
                             </div>
 

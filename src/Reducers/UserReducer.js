@@ -4,7 +4,13 @@ import {
     GET_USER_ACTIVITIES,
     SET_USER_REGISTER,
     ADD_USER_ACTIVITIES,
-    DELETE_USER_ACTIVITY, GET_USER_REFLECTIONS
+    DELETE_USER_ACTIVITY,
+    GET_USER_REFLECTIONS,
+    ADD_USER_REFLECTIONS,
+    EDIT_USER_ACTIVITY,
+    UPDATE_USER_ACTIVITY,
+    UPDATE_USER_REFLECTION,
+    EDIT_USER_REFLECTION
 } from "../Actions/UserAction";
 
 const initialState = {
@@ -12,7 +18,9 @@ const initialState = {
     password: "",
     user_id: "",
     activities: [],
-    reflections: []
+    reflections: [],
+    editActivity:[],
+    editReflection:{}
 };
 
 export function UserReducer(state = initialState, action) {
@@ -45,7 +53,31 @@ export function UserReducer(state = initialState, action) {
         case GET_USER_REFLECTIONS:
             return {
                 ...state,
-                reflections: action.payload.reflections
+                reflections: action.payload.reflections.filter(arr => {
+                    return arr.user_id === state.user_id
+                })
+            };
+        case ADD_USER_REFLECTIONS:
+            return {
+                ...state
+            };
+        case EDIT_USER_ACTIVITY:
+            return {
+                ...state,
+                editActivity: action.payload.data
+            };
+        case EDIT_USER_REFLECTION:
+            return {
+                ...state,
+                editReflection: action.payload.data
+            };
+        case UPDATE_USER_ACTIVITY:
+            return {
+                ...state,
+            };
+        case UPDATE_USER_REFLECTION:
+            return  {
+                ...state
             };
         default:
             return state;
