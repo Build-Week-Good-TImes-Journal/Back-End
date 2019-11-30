@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import { registerUser } from "../../Actions/UserAction";
 
 
-function SignUp() {
+function SignUp({ registerUser }) {
 
     const[user,setUser]=useState({
         username:"",
@@ -20,7 +20,7 @@ function SignUp() {
     };
 
 console.log(user);
-    const handleSubmit=(e, user)=>{
+    const handleSubmit=(e)=>{
         e.preventDefault();
         registerUser(user)
     };

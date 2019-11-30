@@ -73,16 +73,18 @@ export function addUserActivity(name, activity) {
 
 export function registerUser(user) {
 
+    return dispatch => {
         api()
-            .post('/api/auth/register/', user)
+            .post('/api/auth/register', user)
             .then(res => {
                 console.log(res);
+                dispatch({ type: SET_USER_REGISTER })
             })
             .catch(err => {
                 console.log(err.message)
             })
     }
-
+}
 export function deleteActivity(user, id) {
 
     return dispatch => {

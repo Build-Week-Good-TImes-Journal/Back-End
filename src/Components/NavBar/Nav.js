@@ -10,6 +10,7 @@ const Nav = () => {
         <Container className="navContainer">
             <nav className="nav">
                 {!signedIn && <Link to="/">Login</Link>}
+                {!signedIn && <Link to="/signup">Sign Up</Link>}
                 {signedIn && <Link to={"/AddReflection"}>View Reflections</Link>}
                 {signedIn && <Link to={"/myactivities"}>View Activities</Link>}
                 {signedIn && <Link to={"/dashboard"}>My Dashboard</Link>}

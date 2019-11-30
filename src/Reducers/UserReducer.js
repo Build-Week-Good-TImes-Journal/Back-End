@@ -36,6 +36,10 @@ export function UserReducer(state = initialState, action) {
                 password: action.payload.password,
                 user_id: action.payload.id
             };
+        case SET_USER_REGISTER:
+            return {
+                ...state,
+            };
         case GET_USER_ACTIVITIES:
             return {
                 ...state,
