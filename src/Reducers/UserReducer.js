@@ -10,7 +10,9 @@ import {
     EDIT_USER_ACTIVITY,
     UPDATE_USER_ACTIVITY,
     UPDATE_USER_REFLECTION,
-    EDIT_USER_REFLECTION
+    EDIT_USER_REFLECTION,
+    GET_ACTIVITY_LOGS,
+    EDIT_USER_ACTIVITY_lOG
 } from "../Actions/UserAction";
 
 const initialState = {
@@ -20,7 +22,9 @@ const initialState = {
     activities: [],
     reflections: [],
     editActivity:{},
-    editReflection:{}
+    editReflection:{},
+    editActivityLog:{},
+    activityLogs:[]
 };
 
 export function UserReducer(state = initialState, action) {
@@ -78,6 +82,18 @@ export function UserReducer(state = initialState, action) {
         case UPDATE_USER_REFLECTION:
             return  {
                 ...state
+            };
+        case GET_ACTIVITY_LOGS:
+            return {
+                ...state,
+                activityLogs: action.payload.data.filter(arr => {
+                    return arr.user_id === state.user_id
+                })
+            };
+        case EDIT_USER_ACTIVITY_lOG:
+            return {
+                ...state,
+                editActivityLog: action.payload.data
             };
         default:
             return state;

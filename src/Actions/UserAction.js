@@ -12,7 +12,9 @@ export const UPDATE_USER_ACTIVITY = "UPDATE_USER_ACTIVITY";
 export const UPDATE_USER_REFLECTION = "UPDATE_USER_REFLECTION";
 export const EDIT_USER_ACTIVITY = "EDIT_USER_ACTIVITY";
 export const EDIT_USER_REFLECTION = "EDIT_USER_REFLECTION";
+export const EDIT_USER_ACTIVITY_lOG = "EDIT_USER_ACTIVITY_lOG";
 export const DELETE_USER_ACTIVITY = "DELETE_USER_ACTIVITY";
+export const GET_ACTIVITY_LOGS = "GET_ACTIVITY_LOGS";
 
 export function getUserLogin(param) {
     return dispatch => {
@@ -36,12 +38,12 @@ export function getUserLogin(param) {
 
 export function getUserActivities(name) {
     return dispatch => {
-        // dispatch({ type: GET_USER_ACTIVITIES });
 
         api()
             .get(`/api/activities/${name}`)
             .then(res => {
                 console.log(res.data);
+                console.log("hey")
                 dispatch({ type: GET_USER_ACTIVITIES, payload: {
                         activities: res.data
                     }})
@@ -58,11 +60,12 @@ export function addUserActivity(name, activity) {
         api()
             .post(`/api/activities/${name}`, activity)
             .then(res => {
+                console.log(res)
+                console.log(activity)
                 dispatch({ type: ADD_USER_ACTIVITIES })
             })
             .catch(err => {
-                console.log(err);
-                console.log(name);
+                console.log(err.message);
                 console.log(activity);
             });
     };
@@ -135,6 +138,7 @@ export function addReflections(user, reflection) {
             api()
                 .get(`/api/activities/${name}/${id}`)
                 .then(res => {
+                    console.log(res)
                    dispatch({ type: EDIT_USER_ACTIVITY, payload:{
                        data: res.data[0]
                        } })
@@ -145,19 +149,18 @@ export function addReflections(user, reflection) {
         }
     }
 
-    export function updateUserActivity(name, id) {
+    export function updateUserActivity(name, data) {
 
         return dispatch => {
 
             api()
-                .put(`/api/activities/${name}`, id)
+                .put(`/api/activities/${name}`, data)
                 .then(res => {
                     console.log(res);
-                    console.log(id);
                     dispatch({ type: UPDATE_USER_ACTIVITY })
                 })
                 .catch(err => {
-                    console.log(id);
+                    console.log(data)
                     console.log(err.message)
                 })
         }
@@ -193,6 +196,59 @@ export function updateUserReflection(name, id) {
             })
             .catch(err => {
                 console.log(id);
+                console.log(err.message)
+            })
+    }
+}
+
+export function activityLogs(name) {
+
+    return dispatch => {
+
+        api()
+            .get(`/api/activity-logs/admin`)
+            .then(res => {
+                console.log(res)
+                dispatch({ type: GET_ACTIVITY_LOGS, payload: {
+                    data: res.data
+                    }})
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+export function editActivityLogs(name, id) {
+
+    return dispatch => {
+
+        api()
+            .get(`/api/activity-logs/${name}/${id}`)
+            .then(res => {
+                console.log(res)
+                dispatch({ type: EDIT_USER_ACTIVITY_lOG, payload: {
+                        data: res.data[0]
+                    }})
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+export function updateUserActivityLog(name, data) {
+
+    return dispatch => {
+
+        api()
+            .put(`/api/activity-Logs/${name}`, data)
+            .then(res => {
+                console.log(res);
+                dispatch({ type: UPDATE_USER_ACTIVITY })
+            })
+            .catch(err => {
+                console.log(data)
                 console.log(err.message)
             })
     }

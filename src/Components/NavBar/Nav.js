@@ -13,6 +13,7 @@ const Nav = () => {
                 {signedIn && <Link to={"/AddReflection"}>View Reflections</Link>}
                 {signedIn && <Link to={"/myactivities"}>View Activities</Link>}
                 {signedIn && <Link to={"/dashboard"}>My Dashboard</Link>}
+                {signedIn && <Link to={"/activitylogs"}>Activity Logs</Link>}
                 {signedIn && <Link to={"/logout"}>Log Out</Link>}
             </nav>
         </Container>

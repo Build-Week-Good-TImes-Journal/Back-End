@@ -8,10 +8,34 @@ import { addReflections, addUserActivity } from "../../Actions/UserAction";
 
 
 function UserDashboard ({info, name, activity, id, addUserActivity, addReflections}) {
+
+    const [arrayActivity, setArrayActivity] = useState([{
+        name: "tom",
+        notes: "",
+        enjoyment: 0,
+        engagement: 0,
+        ala_id: 0
+    }]);
+
+    // const [newActivity, setNewActivity] = useState({
+    //     user_id: id,
+    //     date: Date.now(),
+    //     outcomes: "",
+    //     activities: [{
+    //         name: "tom",
+    //         notes: "did this work",
+    //         enjoyment: 0,
+    //         engagement: 0
+    //     }]
+    // });
+
     const [newActivity, setNewActivity] = useState({
         name: "",
-        description: ""
+        description: "",
+        user_id: id,
+        date: Date.now()
     });
+
 
     const [newReflection, setNewReflection] = useState({
         reflection: "",
@@ -22,10 +46,6 @@ function UserDashboard ({info, name, activity, id, addUserActivity, addReflectio
     const handleSubmitActivity = (e) => {
         e.preventDefault();
         addUserActivity(name, newActivity);
-        setNewActivity({
-            name: "",
-            description: ''
-        });
     };
 
     const handleChangeActivity = (e) => {
@@ -34,6 +54,19 @@ function UserDashboard ({info, name, activity, id, addUserActivity, addReflectio
             [e.target.name]: e.target.value
         });
     };
+
+    const handleChangeActivities = (e) => {
+        setArrayActivity({
+            ...arrayActivity,
+            [e.target.name]: e.target.value
+        });
+        // setNewActivity({
+        //     ...newActivity,
+        //     activities: {arrayActivity}
+        // })
+    };
+
+
     const handleSubmitReflection = (e) => {
         e.preventDefault();
         addReflections(name, newReflection);
@@ -48,15 +81,18 @@ function UserDashboard ({info, name, activity, id, addUserActivity, addReflectio
             [e.target.name]: e.target.value
         });
     };
-
+console.log(newActivity);
+console.log(arrayActivity)
     return (
         <div>
-            <HeaderLogin>Add Activity</HeaderLogin>
-            <br/><br/><form onSubmit={handleSubmitActivity}>
-            <span>Name of the activity : </span><TextField label="Name" type="text" name="name" value={newActivity.name} onChange={handleChangeActivity}/><br/><br/>
-            <span>Description of the activity : </span><TextField label="Description" type="text" name="description" value={newActivity.description} onChange={handleChangeActivity}/><br/><br/>
-            <Button type="submit">Add activity</Button>
-        </form>
+        <HeaderLogin>Add Activity</HeaderLogin><br/><br/>
+            <form onSubmit={handleSubmitActivity}>
+                <span>Name of the activity - </span><TextField label="Name" type="text" name="name" value={newActivity.name} onChange={handleChangeActivity}/><br/><br/>
+                <span>Description of the activity - </span><TextField label="Description" type="text" name="description" value={newActivity.description} onChange={handleChangeActivity}/><br/><br/>
+                <span>Level of Enjoyment - </span><input type="number" name="enjoyment" value={arrayActivity.enjoyment} onChange={handleChangeActivities} /><br/><br/>
+                <span>Level of Engagement - </span><input type="number" name="engagement" value={arrayActivity.engagement} onChange={handleChangeActivities} /><br/><br/>
+                <Button type="submit">Add activity</Button>
+            </form>
 
         <hr/>
 

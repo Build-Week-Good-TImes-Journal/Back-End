@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {DELETE_USER_ACTIVITY, deleteActivity, editActivity, updateUserActivity} from "../../Actions/UserAction";
 import api from "../../Utilites/api";
 
-function EditActivity ({ name, actId, editId,  match, editInfo, editActivity, user_id, updateUserActivity, history, deleteActivity }) {
+function EditActivity ({ name, actId, editId, activity,  match, editInfo, editActivity, user_id, updateUserActivity, history, deleteActivity }) {
 
   const id = match.params.id;
   const [editData, setEditData] = useState(false);
@@ -13,12 +13,12 @@ function EditActivity ({ name, actId, editId,  match, editInfo, editActivity, us
   const [newData, setNewData] = useState({
       name: "",
       description: "",
-      id: id,
+      id: actID.id,
       user_id: user_id
   });
 
    useEffect(() => {
-        editActivity(name, id)
+        editActivity(name, actID.id)
    },[id]);
 
    const saveEdit = (e) => {
@@ -51,9 +51,10 @@ console.log(editInfo)
     return (
         <div>
                     <div>
-                        <h1 onClick={() => edit(newData)} >hey you guys</h1>
+                        <h1 onClick={() => edit(newData)} >{editInfo.name}</h1>
                         <button onClick={clickHandler}>Delete Activity</button>
                     </div>
+
     {editData && (
         <form onSubmit={saveEdit}>
             <legend>Update Activity</legend>
