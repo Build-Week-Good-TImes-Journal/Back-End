@@ -62,7 +62,7 @@ function EditActivityLog ({ name, actId, editId, activity,  match, editInfo, edi
             .catch(err => {
                 console.log(err.message)
             });
-        history.push("/myactivities")
+        history.push("/activitylogs")
     }
 
     console.log(editActivityLog)

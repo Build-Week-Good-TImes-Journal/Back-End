@@ -1,5 +1,4 @@
-import React,{ useState,useEffect } from "react";
-import { Link} from "react-router-dom";
+import React,{ useState } from "react";
 import { connect } from 'react-redux';
 import {Container, HeaderLogin, ActInfo, ActInfo2, ActInfo3, Select} from "../../Styles/StyledWidgets";
 import TextField from "@material-ui/core/TextField";
@@ -7,47 +6,35 @@ import Button from "@material-ui/core/Button";
 import { addReflections, addUserActivity } from "../../Actions/UserAction";
 
 
-function UserDashboard ({info, name, activity, id, addUserActivity, addReflections}) {
+function UserDashboard ({ name, id, addUserActivity, addReflections }) {
 
-    const [arrayActivity, setArrayActivity] = useState([{
-        name: "tom",
-        notes: "",
-        enjoyment: 0,
-        engagement: 0,
-        ala_id: 0
-    }]);
-
-    // const [newActivity, setNewActivity] = useState({
-    //     user_id: id,
-    //     date: Date.now(),
-    //     outcomes: "",
-    //     activities: [{
-    //         name: "tom",
-    //         notes: "did this work",
-    //         enjoyment: 0,
-    //         engagement: 0
-    //     }]
-    // });
-
+    //State data to send on a post request for a new activity
     const [newActivity, setNewActivity] = useState({
         name: "",
         description: "",
         user_id: id,
-        date: Date.now()
+        id: Date.now()
     });
 
-
+    //State data to send on a post request for a new reflection
     const [newReflection, setNewReflection] = useState({
         reflection: "",
         user_id: id,
         data: Date.now()
     });
 
+    //Submit handler to add new activity, resets the fields once created
     const handleSubmitActivity = (e) => {
         e.preventDefault();
         addUserActivity(name, newActivity);
+        setNewActivity({
+            ...newActivity,
+            name: "",
+            description: ""
+        })
     };
 
+    //Change handler to set user input to state above
     const handleChangeActivity = (e) => {
         setNewActivity({
             ...newActivity,
@@ -55,18 +42,7 @@ function UserDashboard ({info, name, activity, id, addUserActivity, addReflectio
         });
     };
 
-    const handleChangeActivities = (e) => {
-        setArrayActivity({
-            ...arrayActivity,
-            [e.target.name]: e.target.value
-        });
-        // setNewActivity({
-        //     ...newActivity,
-        //     activities: {arrayActivity}
-        // })
-    };
-
-
+    //Submit handler to send post request, also resets the text field for reflection
     const handleSubmitReflection = (e) => {
         e.preventDefault();
         addReflections(name, newReflection);
@@ -75,25 +51,34 @@ function UserDashboard ({info, name, activity, id, addUserActivity, addReflectio
         });
     };
 
+    //Change handler for reflection text field, maps user input to state above
     const handleChangeReflection = (e) => {
         setNewReflection({
             ...newReflection,
             [e.target.name]: e.target.value
         });
     };
-console.log(newActivity);
-console.log(arrayActivity)
+
     return (
         <div>
         <HeaderLogin>Add Activity</HeaderLogin><br/><br/>
             <form onSubmit={handleSubmitActivity}>
-                <span>Name of the activity - </span><TextField label="Name" type="text" name="name" value={newActivity.name} onChange={handleChangeActivity}/><br/><br/>
+                {/*dropdown menu for activity, needs to be reset on submit*/}
+                <label htmlFor="activity-select">Type of Activity - </label>
+                <select name="name" id="activity-select" onChange={handleChangeActivity}>
+                    <option value="">--Please choose an option--</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="Leisure">Leisure</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Art">Art</option>
+                    <option value="Family">Family</option>
+                    <option value="Exercise">Exercise</option>
+                    <option value="Social">Social</option>
+                    <option value="Music">Music</option>
+                </select>
                 <span>Description of the activity - </span><TextField label="Description" type="text" name="description" value={newActivity.description} onChange={handleChangeActivity}/><br/><br/>
-                <span>Level of Enjoyment - </span><input type="number" name="enjoyment" value={arrayActivity.enjoyment} onChange={handleChangeActivities} /><br/><br/>
-                <span>Level of Engagement - </span><input type="number" name="engagement" value={arrayActivity.engagement} onChange={handleChangeActivities} /><br/><br/>
                 <Button type="submit">Add activity</Button>
             </form>
-
         <hr/>
 
             <ActInfo>Add your reflections here!</ActInfo>
@@ -105,6 +90,7 @@ console.log(arrayActivity)
             placeholder="How was your week?"
             onChange={handleChangeReflection}
         />
+                {/*Dropdown for reaction looks good, but the server does not take additional data*/}
                 {/*<Select>*/}
                 {/*    <option value="" hidden>*/}
                 {/*        Pick One!*/}
@@ -124,11 +110,13 @@ console.log(arrayActivity)
     )
 };
 
+//functions from UserActions.js for post requests for activity and reflections
 const mapDispatchToProps = {
     addUserActivity,
     addReflections
 };
 
+//A few items pulled from the state store, console.log(info) to see the whole store
 function mapStateToProps(state) {
     return {
         name: state.username,
@@ -137,8 +125,6 @@ function mapStateToProps(state) {
         info: state
     }
 }
-
-
 
 export default connect (
     mapStateToProps,

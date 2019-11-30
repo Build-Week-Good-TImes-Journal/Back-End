@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import {connect} from "react-redux";
 import {editReflection, updateUserReflection} from "../../Actions/UserAction";
 import api from "../../Utilites/api";
-import axios from 'axios';
+
 
 function EditReflection ({ name, user_id, match, editInfo, editID,  editReflection, updateUserReflection, history }) {
 
+    //(id is taken from react-router-dom route path)
     const id = match.params.id;
+    //editData is a boolean that lets the user click to update reflection
     const [editData, setEditData] = useState(false);
-    const [deleteID] = useState({
-        id: editID
-    });
+    //newData is state to map the user updates and is used in the put request to update existing reflection
     const [newData, setNewData] = useState({
         reflection: "",
         date: Date.now(),
@@ -18,22 +18,26 @@ function EditReflection ({ name, user_id, match, editInfo, editID,  editReflecti
         id: id
     });
 
+    //useEffect - used for get request with (id) to get a single reflection to update
     useEffect(() => {
         editReflection(name, id)
-    },[id]);
+    },[id, editReflection, name]);
 
+    //saveEdit - is used to take in the (newDate) and make a put request to update existing reflection
+    //Once put request is ran the (history.push) will send the user back to the reflection component
     const saveEdit = (e) => {
         e.preventDefault();
         updateUserReflection(name, newData);
         history.push("/AddReflection")
     };
 
+    //edit - used to turn on editing feature and record user input to newData
     const edit = refl => {
         setEditData(true);
         setNewData(refl);
     };
 
-console.log(editID)
+    //Handler click is mapped to a (delete button) and runs a delete request on the current reflection
     function clickHandler(e) {
         e.preventDefault();
         api()
@@ -48,27 +52,20 @@ console.log(editID)
             });
         history.push("/dashboard")
     }
-console.log(newData.reflection);
-    console.log(newData);
+
     return (
         <div>
+            <div>
+                <h1 onClick={() => edit(newData)} >{editInfo}</h1>
+                <button onClick={clickHandler}>Delete Activity</button>
+            </div>
 
-                    <div>
-                        <h1 onClick={() => edit(newData)} >{editInfo}</h1>
-                        <button onClick={clickHandler}>Delete Activity</button>
-                    </div>
-
+            {/*editData is used in a ternary to display edit feature*/}
             {editData && (
                 <form onSubmit={saveEdit}>
                     <legend>Update Reflection</legend>
-                    <label>
-                        Reflection -
-                        <input
-                            onChange={e =>
-                                setNewData({ ...newData, reflection: e.target.value })
-                            }
-                            value={newData.reflection}
-                        />
+                    <label>Reflection -
+                        <input onChange={e => setNewData({ ...newData, reflection: e.target.value })} value={newData.reflection}/>
                     </label>
                     <div className="button-row">
                         <button type="submit">save</button>
@@ -79,6 +76,7 @@ console.log(newData.reflection);
         </div>
     )}
 
+//editReflection and updateUserReflection can be found in UserAction.js
 const mapDispatchToProps = {
   editReflection,
   updateUserReflection
@@ -93,8 +91,6 @@ function mapStateToProps(state) {
         editID: state.editReflection.id
     }
 }
-
-
 
 export default connect (
     mapStateToProps,

@@ -5,10 +5,12 @@ import { Container } from "../../Styles/StyledWidgets";
 
 const Nav = () => {
 
+    //Function from the api.js to check local storage for a token
     const signedIn = getToken();
     return (
         <Container className="navContainer">
             <nav className="nav">
+                {/*Ternary used to check for token from local storage and show links depending on true or false*/}
                 {!signedIn && <Link to="/">Login</Link>}
                 {!signedIn && <Link to="/signup">Sign Up</Link>}
                 {signedIn && <Link to={"/AddReflection"}>View Reflections</Link>}

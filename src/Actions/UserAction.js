@@ -1,20 +1,27 @@
 import api from "../Utilites/api";
-import { login } from "../Utilites/api";
 
+//Dispatch for login and registration
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
 export const SET_USER_REGISTER = "SET_USER_REGISTER";
+//Dispatch for user reflection
 export const GET_USER_REFLECTIONS = "GET_USER_REFLECTIONS";
+export const ADD_USER_REFLECTIONS = "ADD_USER_REFLECTIONS";
+export const UPDATE_USER_REFLECTION = "UPDATE_USER_REFLECTION";
+export const EDIT_USER_REFLECTION = "EDIT_USER_REFLECTION";
+//Dispatch for user activities
 export const GET_USER_ACTIVITIES = "GET_USER_ACTIVITIES";
 export const ADD_USER_ACTIVITIES = "ADD_USER_ACTIVITIES";
-export const ADD_USER_REFLECTIONS = "ADD_USER_REFLECTIONS";
-export const GET_USER_ACTIVITY = "GET_USER_ACTIVITY";
-export const UPDATE_USER_ACTIVITY = "UPDATE_USER_ACTIVITY";
-export const UPDATE_USER_REFLECTION = "UPDATE_USER_REFLECTION";
-export const EDIT_USER_ACTIVITY = "EDIT_USER_ACTIVITY";
-export const EDIT_USER_REFLECTION = "EDIT_USER_REFLECTION";
-export const EDIT_USER_ACTIVITY_lOG = "EDIT_USER_ACTIVITY_lOG";
 export const DELETE_USER_ACTIVITY = "DELETE_USER_ACTIVITY";
+export const UPDATE_USER_ACTIVITY = "UPDATE_USER_ACTIVITY";
+export const EDIT_USER_ACTIVITY = "EDIT_USER_ACTIVITY";
+//Dispatch for user activity logs
+export const EDIT_USER_ACTIVITY_lOG = "EDIT_USER_ACTIVITY_lOG";
 export const GET_ACTIVITY_LOGS = "GET_ACTIVITY_LOGS";
+export const ADD_USER_ACTIVITY_LOG = "ADD_USER_ACTIVITY_LOG";
+
+//NOTE - FUNCTIONS ARE NOT IN ORDER OF DISPATCH
+//IF YOU ARE LOOKING FOR ONE USER THE SEARCH ON YOUR IDE
+//USE EITHER THE FUNCTION NAME OR DISPATCH TYPE
 
 export function getUserLogin(param) {
     return dispatch => {
@@ -208,7 +215,7 @@ export function activityLogs(name) {
     return dispatch => {
 
         api()
-            .get(`/api/activity-logs/admin`)
+            .get(`/api/activity-logs/${name}`)
             .then(res => {
                 console.log(res)
                 dispatch({ type: GET_ACTIVITY_LOGS, payload: {
@@ -248,6 +255,23 @@ export function updateUserActivityLog(name, data) {
             .then(res => {
                 console.log(res);
                 dispatch({ type: UPDATE_USER_ACTIVITY })
+            })
+            .catch(err => {
+                console.log(data)
+                console.log(err.message)
+            })
+    }
+}
+
+export function addUserActivityLog(name, data) {
+
+    return dispatch => {
+
+        api()
+            .post(`/api/activity-logs/${name}`, data)
+            .then(res => {
+                console.log(res);
+                dispatch({ type: ADD_USER_ACTIVITY_LOG })
             })
             .catch(err => {
                 console.log(data)
