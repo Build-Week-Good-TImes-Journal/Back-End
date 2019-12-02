@@ -11,12 +11,13 @@ import ProtectedRoute from "./ProtectedRoute";
 import EditActivityLog from "../Components/Activities/EditActivityLog";
 import EditReflection from "../Components/Reflections/EditReflection";
 import ActivityLogs from "../Components/Activities/ActivityLogs";
+import { Container } from '../Styles/StyledWidgets';
 
 const AppRouting = () => {
 
     //All components routes live here, Protected routes need a toke to access
     return (
-        <div>
+        <Container>
             <Route exact path="/" component={UsersLogin}/>
             <Route exact path="/signup" component={SignUp}/>
             <ProtectedRoute exact path={`/dashboard`} component={UserDashboard}/>
@@ -27,7 +28,7 @@ const AppRouting = () => {
             <ProtectedRoute exact path="/reflection/:id" component={EditReflection}/>
             <ProtectedRoute exact path={`/logout`} component={Logout}/>
             <ProtectedRoute exact path="/AddReflection" component={ReflectionForm}/>
-        </div>
+        </Container>
     )
 };
 
