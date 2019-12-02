@@ -1,8 +1,7 @@
 import React,{useState} from "react";
 import { getUserLogin } from "../../Actions/UserAction";
 import { connect } from 'react-redux';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import {Button , Container, Info, HeaderLogin} from "../../Styles/StyledWidgets"
 
 
 function UsersLogin({ getUserLogin, history, }){
@@ -30,14 +29,14 @@ function UsersLogin({ getUserLogin, history, }){
     };
 
     return(
-        <div>
+        <Container>
             <form onSubmit={handleSubmit}>
-                <br/><br/><h3>Login</h3>
-                <TextField label="User Name" type="text" name="username" placeholder="User Name" value={login.username} onChange={handleChange}/><br/><br/>
-                <TextField labe="Password" type="password" name="password" placeholder="Password" value={login.password} onChange={handleChange}/><br/><br/>
+                <br/><br/><HeaderLogin>Login</HeaderLogin>
+                <Info label="User Name" type="text" name="username" placeholder="User Name" value={login.username} onChange={handleChange}/><br/><br/>
+                <Info labe="Password" type="password" name="password" placeholder="Password" value={login.password} onChange={handleChange}/><br/><br/>
                 <Button type="submit">Login</Button>
             </form>
-        </div>
+        </Container>
     )
 }
 

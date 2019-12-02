@@ -8,6 +8,7 @@ import {
     updateUserActivity, updateUserActivityLog
 } from "../../Actions/UserAction";
 import api from "../../Utilites/api";
+import { Button, Container, HeaderLogin } from '../../Styles/StyledWidgets';
 
 function EditActivityLog ({ name, actId, editId, activity,  match, editInfo, editActivityLogs, editActivityLog, user_id, updateUserActivityLog, history, deleteActivity }) {
 
@@ -67,9 +68,9 @@ function EditActivityLog ({ name, actId, editId, activity,  match, editInfo, edi
 
     console.log(editActivityLog)
     return (
-        <div>
+        <Container>
             <div>
-                <h1 onClick={() => edit(newData)} >{editActivityLog.outcomes}</h1>
+                <HeaderLogin onClick={() => edit(newData)} >{editActivityLog.outcomes}</HeaderLogin>
                 {/*{editActivityLog.activities.map((arr) => {*/}
                 {/*    return  (*/}
                 {/*        <div>*/}
@@ -77,7 +78,7 @@ function EditActivityLog ({ name, actId, editId, activity,  match, editInfo, edi
                 {/*        </div>*/}
                 {/*    )*/}
                 {/*})}*/}
-                <button onClick={clickHandler}>Delete Activity</button>
+                <Button onClick={clickHandler}>Delete Activity</Button>
             </div>
 
             {editData && (
@@ -111,7 +112,7 @@ function EditActivityLog ({ name, actId, editId, activity,  match, editInfo, edi
                     </div>
                 </form>
             )}
-        </div>
+        </Container>
     )}
 
 const mapDispatchToProps = {

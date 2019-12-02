@@ -53,7 +53,7 @@ border: 1px solid #FFF4A6;
 width: 7rem;
 border-radius: 7px;
 background-color: #0b607b;
-// padding : 4px;
+padding : 4px;
 text-align: center;  
 &:hover {
   background-color: #FF3238;
@@ -70,7 +70,6 @@ export const Container = styled.body`
     rgba(71, 124, 124, 1) 100%
   );
   height: 100%;
-  width: auto;
   padding: 2rem;
   align-content: center;
   border-radius: 7px;

@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import {activityLogs, addUserActivityLog} from "../../Actions/UserAction";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import { Button, HeaderLogin, Container, Info} from '../../Styles/StyledWidgets';
 
 function ActivityLogs({ name, activityLogs, addUserActivityLog, logs, history, user_id }) {
 
@@ -59,27 +60,27 @@ function ActivityLogs({ name, activityLogs, addUserActivityLog, logs, history, u
 
 
     return (
-        <div>
-            <h1>Create New Activity Log</h1>
+        <Container>
+            <HeaderLogin>Create New Activity Log</HeaderLogin>
             <form onSubmit={submitHandler}>
-                <input type="text" name="outcomes" placeholder="How has your day..." value={newLog.outcomes} onChange={changeHandler} />
-                <input type="text" name="name" placeholder="What was your activity?" value={newAct.name} onChange={changeHandlerAct} />
-                <input type="text" name={"notes"} placeholder="How was the activity?" value={newAct.notes} onChange={changeHandlerAct} />
-                <input type="number" name={"enjoyment"} placeholder="How would you rate your enjoyment?" value={newAct.enjoyment} onChange={changeHandlerAct} />
-                <input type="number" name={"engagement"} placeholder="How would you rate your engagement?" value={newAct.engagement} onChange={changeHandlerAct} />
-                <button type="submit">Submit</button>
+                <Info type="text" name="outcomes" placeholder="How has your day..." value={newLog.outcomes} onChange={changeHandler} />
+                <Info type="text" name="name" placeholder="What was your activity?" value={newAct.name} onChange={changeHandlerAct} />
+                <Info type="text" name={"notes"} placeholder="How was the activity?" value={newAct.notes} onChange={changeHandlerAct} />
+                <Info type="number" name={"enjoyment"} placeholder="How would you rate your enjoyment?" value={newAct.enjoyment} onChange={changeHandlerAct} />
+                <Info type="number" name={"engagement"} placeholder="How would you rate your engagement?" value={newAct.engagement} onChange={changeHandlerAct} />
+                <Button type="submit">Submit</Button>
             </form>
         {logs.map((arr) => {
             return (
                 <div key={arr.id}>
                 <h1>{arr.outcomes}</h1>
                     <Link to={`/activitylog/${arr.id}`}>
-                    <button>Update</button>
+                    <Button>Update</Button>
                     </Link>
                 </div>
             )
             })}
-        </div>
+        </Container>
     )
 }
 

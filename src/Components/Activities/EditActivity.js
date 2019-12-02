@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {connect} from "react-redux";
 import { deleteActivity, editActivity, updateUserActivity} from "../../Actions/UserAction";
 import api from "../../Utilites/api";
+import { Button, Container, HeaderLogin } from '../../Styles/StyledWidgets';
 
 function EditActivity ({ name, editId, match, editInfo, editActivity, user_id, updateUserActivity, history }) {
 
@@ -56,10 +57,10 @@ function EditActivity ({ name, editId, match, editInfo, editActivity, user_id, u
     }
 
     return (
-        <div>
+        <Container>
             <div>
-                <h1 onClick={() => edit(newData)} >{editInfo.name}</h1>
-                <button onClick={clickHandler}>Delete Activity</button>
+                <HeaderLogin onClick={() => edit(newData)} >{editInfo.name}</HeaderLogin>
+                <Button onClick={clickHandler}>Delete Activity</Button>
             </div>
             {/*editData is used in a ternary and when set to true displays the update feature*/}
     {editData && (
@@ -80,7 +81,7 @@ function EditActivity ({ name, editId, match, editInfo, editActivity, user_id, u
             </div>
         </form>
     )}
-    </div>
+    </Container>
     )}
 
 //All functions is dispatch can be found in the UserAction.js

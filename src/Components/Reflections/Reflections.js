@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, ActInfo, ActInfo2, Select } from "../../Styles/StyledWidgets";
+import { Container, ActInfo, ActInfo2, Select, Button } from "../../Styles/StyledWidgets";
 // import logo from "../../Styles/logo.png";
 import { getReflections } from "../../Actions/UserAction";
 import {connect} from "react-redux";
@@ -26,7 +26,7 @@ function ReflectionForm({ name, getReflections, reflection }) {
                     <ActInfo2>{reflection.reflection}</ActInfo2>
                     <ActInfo2>{reflection.description}</ActInfo2>
                     <Link to={`/reflection/${reflection.id}`}>
-                        <button>Update Reflection</button>
+                        <Button>Update Reflection</Button>
                     </Link>
                 </div>
             ))}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {connect} from "react-redux";
 import {editReflection, updateUserReflection} from "../../Actions/UserAction";
 import api from "../../Utilites/api";
+import { Button, Container, HeaderLogin } from '../../Styles/StyledWidgets';
 
 
 function EditReflection ({ name, user_id, match, editInfo, editID,  editReflection, updateUserReflection, history }) {
@@ -54,10 +55,10 @@ function EditReflection ({ name, user_id, match, editInfo, editID,  editReflecti
     }
 
     return (
-        <div>
+        <Container>
             <div>
-                <h1 onClick={() => edit(newData)} >{editInfo}</h1>
-                <button onClick={clickHandler}>Delete Activity</button>
+                <HeaderLogin onClick={() => edit(newData)} >{editInfo}</HeaderLogin>
+                <Button onClick={clickHandler}>Delete Reflection</Button>
             </div>
 
             {/*editData is used in a ternary to display edit feature*/}
@@ -68,12 +69,12 @@ function EditReflection ({ name, user_id, match, editInfo, editID,  editReflecti
                         <input onChange={e => setNewData({ ...newData, reflection: e.target.value })} value={newData.reflection}/>
                     </label>
                     <div className="button-row">
-                        <button type="submit">save</button>
-                        <button onClick={() => setEditData(false)}>cancel</button>
+                        <Button type="submit">save</Button>
+                        <Button onClick={() => setEditData(false)}>cancel</Button>
                     </div>
                 </form>
             )}
-        </div>
+        </Container>
     )}
 
 //editReflection and updateUserReflection can be found in UserAction.js
