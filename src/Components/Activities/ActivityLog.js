@@ -10,7 +10,7 @@ import {
   ActInfo3,
   Button
 } from "../../Styles/StyledWidgets";
-import { logo } from "../../Styles/logo.png";
+
 
 function ActivityLog({ name, activity, getUserActivities }) {
   //useEffect - used to grab all activities from current user

@@ -64,8 +64,8 @@ function EditReflection ({ name, user_id, match, editInfo, editID,  editReflecti
             {/*editData is used in a ternary to display edit feature*/}
             {editData && (
                 <form onSubmit={saveEdit}>
-                    <legend>Update Reflection</legend>
-                    <label>Reflection -
+                    <HeaderLogin>Update Reflection</HeaderLogin>
+                    <label className="label1">Reflection -
                         <input onChange={e => setNewData({ ...newData, reflection: e.target.value })} value={newData.reflection}/>
                     </label>
                     <div className="button-row">

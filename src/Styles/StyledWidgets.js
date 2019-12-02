@@ -46,6 +46,7 @@ export const HeaderLogin = styled.h1`
 
 export const Info = styled.input`
 display: flex;
+justify-content: center;
 margin: 1% auto;
 font-family: Roboto ;
 color: #FFF4A6
