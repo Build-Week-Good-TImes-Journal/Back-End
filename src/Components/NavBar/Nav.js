@@ -8,8 +8,9 @@ const Nav = () => {
   const signedIn = getToken();
   return (
     <Container className="navContainer">
-      <img src={ Logo } alt="logo" className="Clogo"/>
+      
       <nav className="nav">
+      <img src={ Logo } alt="logo" className="Clogo"/>
         {/*Ternary used to check for token from local storage and show links depending on true or false*/}
         {!signedIn && <Link to="/"></Link>}
         {!signedIn && <Link className="signup"to="/signup">Sign Up</Link>}
